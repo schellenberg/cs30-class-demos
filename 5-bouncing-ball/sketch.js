@@ -13,11 +13,18 @@ function setup() {
 
 function draw() {
   background(0);
-  
+  moveBall();
+  bounceBall();
+  displayBall();
+}
+
+function moveBall() {
   // move the ball
   x += dx;
   y += dy;
-  
+}
+
+function bounceBall() {
   // check for bounce
   if (x + radius >= width || x - radius <= 0) {
     dx = -1 * dx;
@@ -25,7 +32,9 @@ function draw() {
   if (y + radius >= height || y - radius <= 0) {
     dy = -1 * dy;
   }
-  
+}
+
+function displayBall() {
   // display the ball
   ellipse(x, y, radius*2, radius*2);
 }
