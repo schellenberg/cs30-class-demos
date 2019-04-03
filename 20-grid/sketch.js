@@ -125,6 +125,14 @@ function keyPressed() {
   if (key === "s") {
     saveJSON(grid, "thegrid.json");
   }
+  if (key === "g") {
+    noLoop();
+    grid = loadJSON("assets/gosper.json", loadingComplete);
+  }
+}
+
+function loadingComplete() {
+  loop();
 }
 
 function mousePressed() {
