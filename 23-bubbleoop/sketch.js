@@ -50,7 +50,6 @@ class Timer {
   restart() {
     this.startTime = millis();
     this.endTime = this.startTime + this.timeToWait;
-    this.startTime = millis();
     this.hasRun = true;
   }
 }
