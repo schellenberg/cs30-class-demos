@@ -8,6 +8,7 @@ class Bubble {
     this.radius = random(25, 100);
     this.color = color(random(255), random(255), random(255), random(255));
     this.timer = new Timer(1000);
+    this.isOffScreen = false;
   }
 
   display() {
@@ -16,6 +17,9 @@ class Bubble {
       fill(this.color);
       ellipse(this.x, this.y, this.radius*2, this.radius*2);
     } 
+    else {
+      this.isOffScreen = true;
+    }
   }
 
   bubbleUp() {
@@ -67,9 +71,19 @@ function setup() {
 function draw() {
   background(0);
 
-  for (let i = 0; i < theBubbles.length; i++) {
-    theBubbles[i].bubbleUp();
-    theBubbles[i].display();
+  for (let i = theBubbles.length - 1; i >= 0; i--) {
+    if (theBubbles[i].isOffScreen) {
+      theBubbles.splice(i, 1);  //removes the ith element from the array
+    }
+    else {
+      theBubbles[i].bubbleUp();
+      theBubbles[i].display();
+    }
   }
   
+}
+
+function mousePressed() {
+  let myBubble = new Bubble(mouseX, mouseY, random(-5, -1));
+  theBubbles.push(myBubble);
 }
