@@ -7,14 +7,14 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  filteredImage = makeGrayscale(clownfish);
 }
 
 function draw() {
+  filteredImage = makeGrayscale(clownfish);
   background(220);
 
-  imageMode(CENTER);
-  image(filteredImage, mouseX, mouseY);
+  // imageMode(CENTER);
+  image(filteredImage, 0, 0);
 }
 
 function makeGrayscale(sourceImage) {
@@ -35,7 +35,12 @@ function makeGrayscale(sourceImage) {
 
       let average = (r + g + b) / 3;
 
-      img.set(x, y, color(average, average, average));
+      if (dist(mouseX, mouseY, x, y) > 100) {
+        img.set(x, y, color(average, average, average));
+      }
+      else {
+        img.set(x, y, color(r, g, b));
+      }
     }
   }
 
