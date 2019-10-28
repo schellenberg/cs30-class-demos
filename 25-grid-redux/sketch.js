@@ -1,6 +1,7 @@
 let grid;
 let rows = 30;
 let cols = 30;
+let autoPlay = false;
 
 function setup() {
   if (windowWidth > windowHeight) {
@@ -15,6 +16,11 @@ function setup() {
 function draw() {
   background(220);
   displayGrid(grid, rows, cols);
+  if (autoPlay) {
+    if (frameCount % 5 === 0) {
+      update();
+    }
+  }
 }
 
 function windowResized() {
@@ -35,6 +41,9 @@ function keyTyped() {
   }
   if (key === " ") {
     update();
+  }
+  if (key === "a") {
+    autoPlay = !autoPlay;
   }
 }
 
