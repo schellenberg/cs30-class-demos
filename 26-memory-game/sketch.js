@@ -38,7 +38,7 @@ function createCompletedGrid() {
     pairs.push(thisColor);
     pairs.push(thisColor);
   }
-  shuffle(pairs, true);
+  shuffle(pairs, true); //change the value of pairs to be randomized
 
   let completedGrid = createEmptyGrid(cols, rows);
   //assign each color to a location
@@ -85,8 +85,8 @@ function mousePressed() {
       let secondColor = completedGrid[currentlySelectedCells[1].y][currentlySelectedCells[1].x];
       if (firstColor === secondColor) {
         //update grid to contain this pair
-        grid[currentlySelectedCells[0].y][currentlySelectedCells[0].x] = completedGrid[currentlySelectedCells[0].y][currentlySelectedCells[0].x];
-        grid[currentlySelectedCells[1].y][currentlySelectedCells[1].x] = completedGrid[currentlySelectedCells[1].y][currentlySelectedCells[1].x];
+        // grid[currentlySelectedCells[0].y][currentlySelectedCells[0].x] = completedGrid[currentlySelectedCells[0].y][currentlySelectedCells[0].x];
+        // grid[currentlySelectedCells[1].y][currentlySelectedCells[1].x] = completedGrid[currentlySelectedCells[1].y][currentlySelectedCells[1].x];
         currentlySelectedCells = [];
         if (gameIsWon()) {
           state = "win";
