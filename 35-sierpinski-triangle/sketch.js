@@ -7,6 +7,7 @@ let triangleVertices = [
 ];
 
 let depth = 0;
+let colorList = ["blue", "red", "orange", "green", "yellow", "pink", "aquamarine", "maroon"];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,10 +19,17 @@ function draw() {
 }
 
 function mousePressed() {
-  depth++;
+  if (depth < 8) {
+    depth++;
+  }
 }
 
 function sierpinski(points, level) {
+  noStroke();
+  if (level > colorList.length-1) {
+    colorList.push(color(random(255), random(255), random(255)));
+  }
+  fill(colorList[level]);
   triangle(points[0].x, points[0].y, 
            points[1].x, points[1].y,
            points[2].x, points[2].y);
