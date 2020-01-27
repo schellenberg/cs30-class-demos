@@ -3,6 +3,7 @@
 make_index.py </path/to/directory> [--header <header text>]
 """
 
+
 INDEX_TEMPLATE = r"""
 <html>
 <body>
