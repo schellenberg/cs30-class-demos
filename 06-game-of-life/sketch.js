@@ -4,6 +4,7 @@ let grid;
 let cellWidth;
 let cellHeight;
 const GRIDSIZE = 10;
+let autoPlay = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,6 +15,13 @@ function setup() {
 
 function draw() {
   background(220);
+
+  if (autoPlay) {
+    if (frameCount % 10 === 0) {
+      takeNextTurn();
+    }
+  }
+
   displayGrid();
 }
 
@@ -44,6 +52,9 @@ function keyPressed() {
   }
   if (key === "c") {
     grid = generateEmptyGrid(GRIDSIZE);
+  }
+  if (key === "a") {
+    autoPlay = !autoPlay;
   }
 }
 
