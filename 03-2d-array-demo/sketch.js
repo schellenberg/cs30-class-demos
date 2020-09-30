@@ -6,7 +6,7 @@ let cellHeight;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  grid = generateRandomGrid(10);
+  grid = generateRandomGrid(20);
   cellWidth = width / grid[0].length;
   cellHeight = height / grid.length;
 }
@@ -57,7 +57,7 @@ function generateRandomGrid(gridSize) {
     grid.push([]);
     for (let j=0; j<gridSize; j++) {
       if (random(100) < 50) {
-        grid[i].push(0);
+        grid[i].push(1);
       }
       else {
         grid[i].push(1);
