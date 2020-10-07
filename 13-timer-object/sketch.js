@@ -16,6 +16,7 @@ function draw() {
   else {
     background("white");
   }
+  blinkTime.display(100, 200, 60);
 }
 
 class Timer {
@@ -36,5 +37,11 @@ class Timer {
 
   setWaitTime(howLongToWait) {
     this.howLongToWait = howLongToWait;
+  }
+
+  display(x, y, size) {
+    let remainingSeconds = round((this.endTime - millis())/100) / 10;
+    textSize(size);
+    text(remainingSeconds, x, y);
   }
 }
