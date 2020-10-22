@@ -4,7 +4,7 @@ let player;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  player = new Character(width/2, height-50);
+player = new Character(width/2, height-50)
 }
 
 function draw() {
