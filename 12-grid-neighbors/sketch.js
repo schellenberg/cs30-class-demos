@@ -1,10 +1,18 @@
 // Grid Neighbours
 
-let grid = createEmptyGrid(10, 10);
+let grid = createEmptyGrid(4, 4);
 let rows, cols, cellWidth, cellHeight;
+let bgMusic;
+let clickSound;
+
+function preload() {
+  bgMusic = loadSound("assets/background.mp3");
+  clickSound = loadSound("assets/click3.wav");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  bgMusic.loop();
   rows = grid.length;
   cols = grid[0].length;
   cellWidth = width/cols;
@@ -17,6 +25,8 @@ function draw() {
 }
 
 function mousePressed() {
+  clickSound.play();
+  
   let x = Math.floor(mouseX / cellWidth);
   let y = Math.floor(mouseY / cellHeight);
 
