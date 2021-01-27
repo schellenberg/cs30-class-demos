@@ -5,10 +5,12 @@ let grid, rows, cols, cellWidth, cellHeight;
 // let bgMusic;
 let clickSound;
 let autoTurn = false;
+let gosper;
 
 function preload() {
   // bgMusic = loadSound("assets/background.mp3");
   clickSound = loadSound("assets/click3.wav");
+  gosper = loadJSON("assets/gosper.json");
 }
 
 function setup() {
@@ -108,6 +110,9 @@ function keyPressed() {
   }
   else if (key === "a") {
     autoTurn = !autoTurn;
+  }
+  else if (key === "g") {
+    grid = gosper;
   }
 }
 
