@@ -1,9 +1,10 @@
 // Grid Neighbours
 
-let grid = createEmptyGrid(10, 10);
-let rows, cols, cellWidth, cellHeight;
+const GRIDSIZE = 40;
+let grid, rows, cols, cellWidth, cellHeight;
 // let bgMusic;
 let clickSound;
+let autoTurn = false;
 
 function preload() {
   // bgMusic = loadSound("assets/background.mp3");
@@ -13,6 +14,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // bgMusic.loop();
+  grid = createEmptyGrid(GRIDSIZE, GRIDSIZE);
   rows = grid.length;
   cols = grid[0].length;
   cellWidth = width/cols;
@@ -21,7 +23,14 @@ function setup() {
 
 function draw() {
   background(220);
+  autoTurnIfRequired();
   displayGrid();
+}
+
+function autoTurnIfRequired() {
+  if (autoTurn && frameCount % 10 === 0) {
+    updateBoard();
+  }
 }
 
 function mousePressed() {
@@ -30,11 +39,7 @@ function mousePressed() {
   let x = Math.floor(mouseX / cellWidth);
   let y = Math.floor(mouseY / cellHeight);
 
-  toggleCell(x, y);   //self
-  // toggleCell(x, y-1); //north
-  // toggleCell(x, y+1); //south
-  // toggleCell(x+1, y); //east
-  // toggleCell(x-1, y); //west
+  toggleCell(x, y);
 }
 
 function toggleCell(x, y) {
@@ -75,9 +80,34 @@ function createEmptyGrid(cols, rows) {
   return empty;
 }
 
+function createRandomGrid(cols, rows) {
+  let empty = [];
+  for (let y=0; y<rows; y++) {
+    empty.push([]);
+    for (let x=0; x<cols; x++) {
+      if (random(100) < 50) {
+        empty[y].push(0);
+      }
+      else {
+        empty[y].push(1);
+      }
+    }
+  }
+  return empty;
+}
+
 function keyPressed() {
   if (key === " ") {
     updateBoard();
+  }
+  else if (key === "c") {
+    setup();
+  }
+  else if (key === "r") {
+    grid = createRandomGrid(cols, rows);
+  }
+  else if (key === "a") {
+    autoTurn = !autoTurn;
   }
 }
 
