@@ -21,6 +21,18 @@ function draw() {
   displayGrid();
 }
 
+function mousePressed() {
+  let x = Math.floor(mouseX / cellWidth);
+  let y = Math.floor(mouseY / cellHeight);
+
+  if (grid[y][x] === 0) { //if empty
+    grid[y][x] = 1;       //make it a wall
+  }
+  else if (grid[y][x] === 1) { //if wall
+    grid[y][x] = 0;       //make it empty
+  }
+}
+
 function keyPressed() {
   if (key === "d") {
     movePlayer(playerX+1, playerY, playerX, playerY, "right");
@@ -37,7 +49,7 @@ function keyPressed() {
 }
 
 function movePlayer(x, y, oldX, oldY, direction) {
-  if (x >= 0 && x < COLS && y >= 0 && y < ROWS) {
+  if (x >= 0 && x < COLS && y >= 0 && y < ROWS && grid[y][x] !== 1) {
     grid[y][x] = 9; //new player location
     grid[oldY][oldX] = 0; //remove player from old spot
 
