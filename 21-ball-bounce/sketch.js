@@ -44,6 +44,7 @@ class Ball {
     fill(this.someColor);
     ellipse(this.x, this.y, this.radius*2, this.radius*2);
   }
+  
 
   move() {
     this.x += this.dx;
@@ -77,3 +78,5 @@ class Ball {
     }
   }
 }
+
+
