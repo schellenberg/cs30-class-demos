@@ -5,8 +5,8 @@ let yourName;
 let button;
 
 function setup() {
-  // createCanvas(windowWidth, windowHeight);
-  // background(220);
+  createCanvas(windowWidth, windowHeight);
+  background(220);
   
   nameInput = createInput("");
   nameInput.position(30, 30);
@@ -17,15 +17,8 @@ function setup() {
   button.mousePressed(setName);
 }
 
-function myInputEvent() {
-  //save name when they press enter
-  
-  if (keyCode === ENTER) {     
-    yourName = this.value();
-    console.log("Set the name to: ", this.value());
-  }
-}
-
 function setName() {
   yourName = nameInput.value();
+  button.remove();
+  nameInput.remove();
 }
