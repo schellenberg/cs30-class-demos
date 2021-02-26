@@ -20,10 +20,22 @@ function setup() {
   theSongs.push(song3);
   theSongs.push(song4);
 
+  //start initial song
   chosenSong = random(theSongs);
   chosenSong.play();
+  console.log(chosenSong);
 }
 
 function draw() {
   background(220);
+  
+  makeBeautifulMusic();  
+}
+
+function makeBeautifulMusic() {
+  if (!chosenSong.isPlaying()) {
+    chosenSong = random(theSongs);
+    chosenSong.play();
+    console.log(chosenSong);
+  }
 }
