@@ -5,7 +5,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let theWidthOfSomeRectangle = 30;
+let theWidthOfSomeRectangle = 35;
 let y = height/2;
 
 function setup() {
