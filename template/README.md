@@ -8,7 +8,6 @@ Although you can use any text editor you want, the instructions below will use V
 
 - Install the following packages in VS Code
   - `Live Server` (lets you run your code on your local machine for testing, by adding a "Go Live" button to the bottom of your VS Code window)
-  - `p5js Snippets` (lets VS Code auto-complete p5 functions for you)
 
 
 ## Optional
@@ -96,6 +95,10 @@ p5.sound extends p5.js with Web Audio functionality including audio input, playb
 ## index.html
 
 index.html is a template for an HTML file. This index.html first imports the main p5js library included in the js folder, then loads and executes the file sketch.js which is where you can write your own code. This is the file you need to edit if you want to include sound or collision detection (you should be able to simply uncomment the links to those libraries).
+
+## jsconfig.json and node_modules folder
+
+The jsconfig.json (and the node_modules folder it links to) allow VS Code to provide autocomplete for p5js functions, as well as documentation while you are writing your code. This is a better method than the p5js-snippets extension that I used to use, as this allows you to see the documentation for functions while you use them.
 
 ## LICENSE
 
