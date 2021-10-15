@@ -1,7 +1,7 @@
 // Game of Life
 
 let grid;
-let gridSize = 10;
+let gridSize = 40;
 let cellWidth, cellHeight;
 
 function setup() {
@@ -14,6 +14,15 @@ function setup() {
 function draw() {
   background(220);
   displayGrid();
+}
+
+function keyPressed() {
+  if (key === "e") {
+    grid = createEmpty2DArray(gridSize, gridSize);
+  }
+  if (key === "r") {
+    grid = createRandom2DArray(gridSize, gridSize);
+  }
 }
 
 function mousePressed() {
@@ -48,6 +57,22 @@ function createEmpty2DArray(rows, cols) {
     board.push([]);
     for (let x=0; x<cols; x++) {
       board[y].push(0);
+    }
+  }
+  return board;
+}
+
+function createRandom2DArray(rows, cols) {
+  let board = [];
+  for (let y=0; y<rows; y++) {
+    board.push([]);
+    for (let x=0; x<cols; x++) {
+      if (random(100) < 50) {
+        board[y].push(0);
+      }
+      else {
+        board[y].push(1);
+      }
     }
   }
   return board;
