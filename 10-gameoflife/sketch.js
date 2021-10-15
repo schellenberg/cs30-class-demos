@@ -23,6 +23,51 @@ function keyPressed() {
   if (key === "r") {
     grid = createRandom2DArray(gridSize, gridSize);
   }
+  if (key === " ") {
+    nextTurn();
+  }
+}
+
+function nextTurn() {
+  let newBoard = createEmpty2DArray(gridSize, gridSize);
+
+  for (let y=0; y<gridSize; y++) {
+    for (let x=0; x<gridSize; x++) {
+      let neighbours = 0;
+
+      //look at all neighbours and count them
+      for (let i=-1; i<=1; i++) {
+        for (let j=-1; j<=1; j++) {
+          if (y+i>=0 && x+j>=0 && y+i<gridSize && x+j<gridSize) {
+            neighbours += grid[y+i][x+j];
+          }
+        }
+      }
+
+      //don't count yourself
+      neighbours -= grid[y][x];
+
+      //apply rules of game
+      if (grid[y][x] === 1) { //alive
+        if (neighbours === 2 || neighbours === 3) {
+          newBoard[y][x] = 1;
+        }
+        else {
+          newBoard[y][x] = 0;
+        }
+      }
+
+      if (grid[y][x] === 0) { //dead
+        if (neighbours === 3) {
+          newBoard[y][x] = 1;
+        }
+        else {
+          newBoard[y][x] = 0;
+        }
+      }
+    }
+  }
+  grid = newBoard;
 }
 
 function mousePressed() {
