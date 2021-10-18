@@ -4,6 +4,8 @@ let grid;
 let gridSize = 20;
 let cellWidth, cellHeight;
 let level;
+let playerX = 0;
+let playerY = 0;
 
 function preload() {
   level = loadJSON("assets/level1.json"); //assumes gridSize is 20
@@ -14,6 +16,9 @@ function setup() {
   grid = level;
   cellWidth = width/gridSize;
   cellHeight = height/gridSize;
+
+  //put player in grid
+  grid[playerY][playerX] = 9;
 }
 
 function draw() {
@@ -27,6 +32,34 @@ function keyPressed() {
   }
   if (key === "r") {
     grid = createRandom2DArray(gridSize, gridSize);
+  }
+  if (key === "s") {
+    tryToMoveTo(playerX, playerY+1);
+  }
+  else if (key === "w") {
+    tryToMoveTo(playerX, playerY-1);
+  }
+  else if (key === "a") {
+    tryToMoveTo(playerX-1, playerY);
+  }
+  else if (key === "d") {
+    tryToMoveTo(playerX+1, playerY);
+  }
+}
+
+function tryToMoveTo(newX, newY) {
+  //make sure you're on the grid
+  if (newX >= 0 && newY >= 0 && newX < gridSize && newY < gridSize) {
+    if (grid[newY][newX] === 0) { //if new spot is empty
+      //reset current player spot to empty
+      grid[playerY][playerX] = 0;
+    
+      playerX = newX;
+      playerY = newY;
+    
+      //set new player spot to red
+      grid[playerY][playerX] = 9;
+    }
   }
 }
 
@@ -51,6 +84,9 @@ function displayGrid() {
       }
       if (grid[y][x] === 1) {
         fill("black");
+      }
+      if (grid[y][x] === 9) {
+        fill("red");
       }
       rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
     }
