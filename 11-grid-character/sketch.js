@@ -3,10 +3,15 @@
 let grid;
 let gridSize = 20;
 let cellWidth, cellHeight;
+let level;
+
+function preload() {
+  level = loadJSON("assets/level1.json"); //assumes gridSize is 20
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  grid = createEmpty2DArray(gridSize, gridSize);
+  grid = level;
   cellWidth = width/gridSize;
   cellHeight = height/gridSize;
 }
