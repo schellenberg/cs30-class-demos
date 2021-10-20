@@ -12,10 +12,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth*0.8, windowHeight*0.8);
   grid = level;
-  cellWidth = width/gridSize;
-  cellHeight = height/gridSize;
+  cellWidth = (width-1)/gridSize;
+  cellHeight = (height-1)/gridSize;
 
   //put player in grid
   grid[playerY][playerX] = 9;

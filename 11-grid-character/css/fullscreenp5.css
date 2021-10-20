@@ -4,6 +4,13 @@ body, html {
     height: 100%;
     overflow: hidden;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
