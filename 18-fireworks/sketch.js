@@ -21,22 +21,30 @@ function draw() {
 }
 
 function mousePressed() {
-  for (let i=0; i<100; i++) {
-    let myParticle = new Particle(mouseX, mouseY);
+  angleMode(DEGREES);
+  let numberOfFireworks = 100;
+  let theta = 0;
+  for (let i=0; i<numberOfFireworks; i++) {
+    let dx = cos(theta + random(-1, 1)) * random(0.75, 1.25);
+    let dy = sin(theta + random(-1, 1)) * random(0.75, 1.25);
+
+    let myParticle = new Particle(mouseX, mouseY, dx, dy);
     fireworks.push(myParticle);
+
+    theta += (360 / numberOfFireworks);
   }
 }
 
 
 class Particle {
-  constructor(x, y) {
+  constructor(x, y, dx, dy) {
     this.x = x;
     this.y = y;
     this.size = random(3, 7);
     this.alpha = 255;
     this.theColor = color(255, 0, 0, this.alpha);
-    this.dx = random(-5, 5);
-    this.dy = random(-5, 5);
+    this.dx = dx; //random(-5, 5);
+    this.dy = dy; //random(-5, 5);
   }
 
   display() {
