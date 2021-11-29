@@ -4,6 +4,7 @@ module.exports = {
         "es6": true
     },
     "extends": "eslint:recommended",
+    "ecmaFeatures": {
       "blockBindings": true,
       "defaultParams": true,
       "forOf": true
