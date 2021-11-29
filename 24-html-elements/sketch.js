@@ -1,4 +1,4 @@
-// First Demo
+// HMTL Demo
 
 let someText;
 
@@ -8,6 +8,7 @@ function setup() {
 
   someText = createP("Some HTML string");
   someText.position(500, 500);
+  someText.class("instructions");
   someText.style("color", "red");
   someText.style("font-size", "42pt");
 }
@@ -18,5 +19,5 @@ function draw() {
 }
 
 function mousePressed() {
-  someText.html("Something <em>else</em> belongs here...");
+  someText.html('Something <span style="color: green;">that</span> belongs here...');
 }
