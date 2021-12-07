@@ -1,0 +1,15 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+ 
+#typeArea {
+    position: absolute;
+    top:55%;
+    left: 5%;
+}
