@@ -6,16 +6,27 @@ let triangleVertices = [
   {x: 700, y: 700},
 ];
 
+let theDegree = 0;
+let theColors = ["red", "purple", "blue", "green", "orange", "black", "white", "yellow", "violet"];
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
   background(220);
-  sierpinski(triangleVertices, 3);
+  sierpinski(triangleVertices, theDegree);
+}
+
+function mousePressed() {
+  if (theDegree < 8) {
+    theDegree++;
+  }
 }
 
 function sierpinski(points, degree) {
+  noStroke();
+  fill(theColors[degree]);
   triangle(points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y);
 
   //exit clause, if degree is too small
