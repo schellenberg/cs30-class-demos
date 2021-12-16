@@ -9,7 +9,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  fish = new Creature(random(width), random(height), 30);
+  fish = new Clownfish(random(width), random(height), 30, clownfishImg);
 }
 
 function draw() {
@@ -32,5 +32,16 @@ class Creature {
   display() {
     fill("green");
     circle(this.x, this.y, this.size);
+  }
+}
+
+class Clownfish extends Creature {
+  constructor(x, y, size, theImage) {
+    super(x, y, size);
+    this.myImage = theImage;
+  }
+
+  display() {
+    image(this.myImage, this.x, this.y, this.size, this.size);
   }
 }
