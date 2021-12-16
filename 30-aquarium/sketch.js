@@ -1,7 +1,6 @@
 // Aquarium
 
-let fish;
-let octopus;
+let theCreatures = [];
 let clownfishImg;
 let octopusImg;
 
@@ -12,16 +11,24 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  octopus = new Octopus(100, 200, 100, octopusImg);
-  fish = new Clownfish(random(width), random(100, height-100), 30, clownfishImg);
+  for (let i=0; i<50; i++) {
+    if (random(100) < 30) {
+      let octopus = new Octopus(random(width), random(height), 100, octopusImg);
+      theCreatures.push(octopus);
+    }
+    else {
+      let fish = new Clownfish(random(width), random(100, height-100), 30, clownfishImg);
+      theCreatures.push(fish);
+    }
+  }
 }
 
 function draw() {
   background(220);
-  octopus.update();
-  octopus.display();
-  fish.update();
-  fish.display();
+  for (let someCreature of theCreatures) {
+    someCreature.update();
+    someCreature.display();
+  }
 }
 
 class Creature {
@@ -32,7 +39,14 @@ class Creature {
   }
 
   update() {
-    this.x += 4;
+    //Declan's Movement
+    this.x += 2;
+    this.y += sin(this.x / 100);
+
+    // //teleport from right to left
+    if (this.x > width) {
+      this.x = 0;
+    }
   }
 
   display() {
@@ -54,10 +68,6 @@ class Clownfish extends Creature {
     // this.x += 2;
     // this.y = noise(this.yTime)*height;
     // this.yTime += random(0.001, 0.005);
-
-    //Declan's Movement
-    // this.x += this.speed;
-    // this.y += sin(this.x / 100);
 
     //Daniel's Movement
     this.x += random(0.1, 3);
