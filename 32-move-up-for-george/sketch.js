@@ -17,14 +17,11 @@ function moveUp(grid) {
       if (grid[y][x] !== 0) {
         let thisY = y;
         let thisX = x;
-        while (grid[thisY-1][thisX] === 0) {
+        while (thisY > 0 && grid[thisY-1][thisX] === 0) {
           grid[thisY-1][thisX] = grid[thisY][thisX];
           grid[thisY][thisX] = 0;
           
           thisY -= 1;
-          if (thisY <= 1) {
-            break;
-          }
         }
       }
     }
