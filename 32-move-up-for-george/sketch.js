@@ -18,10 +18,16 @@ function moveUp(grid) {
         let thisY = y;
         let thisX = x;
         while (grid[thisY-1][thisX] === 0) {
-          // swapWithAbove
-          //change thisY
+          grid[thisY-1][thisX] = grid[thisY][thisX];
+          grid[thisY][thisX] = 0;
+          
+          thisY -= 1;
+          if (thisY <= 1) {
+            break;
+          }
         }
       }
     }
   }
+  return grid;
 }
