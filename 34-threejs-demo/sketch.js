@@ -1,6 +1,5 @@
 // threejs demo for Hannah
 
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -15,22 +14,24 @@ scene.add( cube );
 
 camera.position.z = 5;
 
-function animate() {
-  requestAnimationFrame( animate );
 
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-
-  renderer.render( scene, camera );
+function setup() {
+  createCanvas(windowWidth, windowHeight);
 }
 
-animate();
+function draw() {
+  //p5js stuff
+  fill("red");
+  rect(100, 100, 200, 100);
 
-
-// function setup() {
-//   createCanvas(windowWidth, windowHeight);
-// }
-
-// function draw() {
-//   background(220);
-// }
+  let rotateAmount = 0.01;
+  if (mouseX < width/2) {
+    rotateAmount = 0.05;
+  }
+  
+  //threejs stuff
+  cube.rotation.x += rotateAmount;
+  cube.rotation.y += rotateAmount;
+  
+  renderer.render( scene, camera );
+}
