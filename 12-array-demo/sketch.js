@@ -20,7 +20,7 @@ function displayCircles() {
   for (let i = 0; i < theCircles.length; i++) {
     noStroke();
     fill(theCircles[i].theColor);
-    circle(theCircles[i].x, theCircles[i].y, theCircles[i].radius);
+    circle(theCircles[i].x, theCircles[i].y, theCircles[i].radius*2);
   }
 }
 
