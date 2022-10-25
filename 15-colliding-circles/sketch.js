@@ -17,6 +17,16 @@ function draw() {
     theCircles[i].x += theCircles[i].dx;
     theCircles[i].y += theCircles[i].dy;
 
+    //collision check
+    for (let j=0; j<theCircles.length; j++) {
+      if (i !== j) { //don't check if hitting self
+        if (isColliding(theCircles[i], theCircles[j])) {
+          theCircles[i].theColor = "red";
+          theCircles[j].theColor = "red";
+        }
+      }
+    }
+
     //left-right edges
     if (theCircles[i].x + theCircles[i].radius > width ||
        theCircles[i].x - theCircles[i].radius < 0) {
@@ -35,6 +45,17 @@ function draw() {
     fill(thisCircle.theColor);
     noStroke();
     circle(thisCircle.x, thisCircle.y, thisCircle.radius*2);
+  }
+}
+
+function isColliding(ball1, ball2) {
+  let distanceBetween = dist(ball1.x, ball1.y, ball2.x, ball2.y);
+  let radiiSum = ball1.radius + ball2.radius;
+  if (distanceBetween > radiiSum) {
+    return false;
+  }
+  else {
+    return true;
   }
 }
 
