@@ -1,7 +1,7 @@
 // Basic Grid Demo
 // Schellenberg
 
-let grid = [[0, 0, 1],
+let grid = [[1, 0, 1],
             [1, 0, 1],
             [0, 1, 0]];
 
@@ -9,9 +9,26 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
+
 function draw() {
   background(220);
   displayGrid(grid);
+}
+
+function mousePressed() {
+  console.log(mouseX, mouseY);
+  let cellWidth = width / grid[0].length;
+  let cellHeight = height / grid.length;
+
+  let x = Math.floor(mouseX/cellWidth);
+  let y = Math.floor(mouseY/cellHeight);
+
+  if (grid[y][x] === 0) {
+    grid[y][x] = 1;
+  }
+  else if (grid[y][x] === 1) {
+    grid[y][x] = 0;
+  }
 }
 
 function displayGrid(grid) {
