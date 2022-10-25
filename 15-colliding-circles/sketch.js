@@ -21,8 +21,13 @@ function draw() {
     for (let j=0; j<theCircles.length; j++) {
       if (i !== j) { //don't check if hitting self
         if (isColliding(theCircles[i], theCircles[j])) {
-          theCircles[i].theColor = "red";
-          theCircles[j].theColor = "red";
+          //swap the speeds
+          let tempDx = theCircles[i].dx;
+          let tempDy = theCircles[i].dy;
+          theCircles[i].dx = theCircles[j].dx;
+          theCircles[i].dy = theCircles[j].dy;
+          theCircles[j].dx = tempDx;
+          theCircles[j].dy = tempDy;
         }
       }
     }
