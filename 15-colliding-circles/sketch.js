@@ -3,10 +3,18 @@
 // Oct 24, 2022
 
 let theCircles = [];
+let collisionSound;
+let backgroundSound;
+
+function preload() {
+  collisionSound = loadSound("pepSound1.mp3");
+  backgroundSound = loadSound("TownTheme.mp3");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   theCircles.push(spawnBall(100, 100));
+  backgroundSound.setVolume(0.2);
 }
 
 function draw() {
@@ -28,6 +36,8 @@ function draw() {
           theCircles[i].dy = theCircles[j].dy;
           theCircles[j].dx = tempDx;
           theCircles[j].dy = tempDy;
+
+          collisionSound.play();
         }
       }
     }
@@ -65,6 +75,9 @@ function isColliding(ball1, ball2) {
 }
 
 function mousePressed() {
+  if (!backgroundSound.isPlaying()) {
+    backgroundSound.loop();
+  }
   theCircles.push(spawnBall(mouseX, mouseY));
 }
 
