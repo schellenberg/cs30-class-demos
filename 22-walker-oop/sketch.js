@@ -39,13 +39,24 @@ class Walker {
 }
 
 let michael;
+let katherine;
+let celia;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   michael = new Walker(width/2, height/2);
+  katherine = new Walker(200, 300);
+  katherine.color = "blue";
+  celia = new Walker(width-150, height-150);
+  celia.color = "green";
 }
 
 function draw() {
   michael.move();
+  katherine.move();
+  celia.move();
+
   michael.display();
+  katherine.display();
+  celia.display();
 }
