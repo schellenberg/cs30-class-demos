@@ -53,15 +53,25 @@ let theCircles = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  theCircles.push(spawnBall(100, 100));
+  let someCircle = new Ball(100, 100);
+  theCircles.push(someCircle);
 }
 
 function draw() {
   background(220);
-
+  for (let i = 0; i < theCircles.length; i++) {
+    theCircles[i].move();
+    for (let j = 0; j < theCircles.length; j++) {
+      if (i !== j) { //don't check if hitting self...
+        theCircles[i].collisionCheck(theCircles[j]);
+      }
+    }
+    theCircles[i].display();
+  }
 }
   
 
 function mousePressed() {
-  theCircles.push(spawnBall(mouseX, mouseY));
+  let someCircle = new Ball(mouseX, mouseY);
+  theCircles.push(someCircle);
 }
