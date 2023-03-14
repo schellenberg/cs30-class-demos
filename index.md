@@ -7,3 +7,4 @@
 - [Cubic Disarray](05-cubic-disarray)
 
 ## Projects
+- [Arrays and Object Notation](06-array-assignment)
