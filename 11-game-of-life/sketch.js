@@ -6,6 +6,7 @@ const ROWS = 10;
 const COLS = 10;
 let grid;
 let cellSize;
+let autoUpdate = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,6 +23,9 @@ function setup() {
 
 function draw() {
   background(220);
+  if (autoUpdate && frameCount % 10 === 0) {
+    grid = updateGrid();
+  }
   displayGrid(grid);
 }
 
@@ -33,7 +37,10 @@ function keyTyped() {
     grid = createEmpty2dArray(ROWS, COLS);
   }
   else if (key === " ") {
-    grid = update();
+    grid = updateGrid();
+  }
+  else if (key === "a") {
+    autoUpdate = !autoUpdate;
   }
 }
 
@@ -44,7 +51,7 @@ function mousePressed() {
   toggleCell(x, y);
 }
 
-function update() {
+function updateGrid() {
   let nextTurn = createEmpty2dArray(ROWS, COLS);
 
   //look at every cell
