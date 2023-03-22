@@ -32,6 +32,9 @@ function keyTyped() {
   else if (key === "e") {
     grid = createEmpty2dArray(ROWS, COLS);
   }
+  else if (key === " ") {
+    grid = update();
+  }
 }
 
 function mousePressed() {
@@ -39,6 +42,52 @@ function mousePressed() {
   let y = Math.floor(mouseY/cellSize);
 
   toggleCell(x, y);
+}
+
+function update() {
+  let nextTurn = createEmpty2dArray(ROWS, COLS);
+
+  //look at every cell
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
+      //count the neighbours
+      let neighbours = 0;
+
+      //look at all cells around
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          //detect edge cases
+          if (y+i >= 0 && y+i < ROWS && x+j >= 0 && x+j < COLS) {
+            neighbours += grid[y+i][x+j];
+          }
+        }
+      }
+
+      //be careful about counting self...
+      neighbours -= grid[y][x];
+
+      //apply rules
+      if (grid[y][x] === 1) { //alive
+        if (neighbours === 2 || neighbours === 3) {
+          nextTurn[y][x] = 1; //stay alive
+        }
+        else {
+          nextTurn[y][x] = 0; //died from being lonely or overpopulated
+        }
+      }
+
+      if (grid[y][x] === 0) { //dead
+        if (neighbours === 3) {
+          nextTurn[y][x] = 1; //new birth
+        }
+        else {
+          nextTurn[y][x] = 0; //stay dead
+        }
+      }
+    }
+  }
+
+  return nextTurn;
 }
 
 function toggleCell(x, y) {
