@@ -10,6 +10,9 @@
 - [Grid Demo](09-2d-grid)
 - [Color Game](10-color-game)
 - [Game of Life](11-game-of-life)
+- [Character in Grid](12-character-in-grid)
+- [Platformer Starter](13-platformer)
+- [Sudoku Starter](14-sudoku)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
