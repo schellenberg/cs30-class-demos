@@ -13,6 +13,7 @@
 - [Character in Grid](12-character-in-grid)
 - [Platformer Starter](13-platformer)
 - [Sudoku Starter](14-sudoku)
+- [Scribble Demo](15-scribble-demo)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
