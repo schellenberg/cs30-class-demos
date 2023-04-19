@@ -41,9 +41,21 @@ class Ball {
 
     if (distanceApart < radiiSum) {
       //collision!!!
-      this.r = 255;
-      this.g = 0;
-      this.b = 0;
+      // this.r = 255;
+      // this.g = 0;
+      // this.b = 0;
+
+      //method 1
+      // this.dx *= -1;
+      // this.dy *= -1;
+
+      //method 2
+      let tempX = this.dx;
+      let tempY = this.dy;
+      this.dx = otherBall.dx;
+      this.dy = otherBall.dy;
+      otherBall.dx = tempX;
+      otherBall.dy = tempY;
     }
   }
 }
