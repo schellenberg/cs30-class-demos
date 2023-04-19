@@ -17,6 +17,7 @@
 - [Walker OOP](16-walker)
 - [Walker OOP Arrays](17-walker-array)
 - [Fireworks OOP](18-fireworks)
+- [Ball Array OOP](19-ball-array)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
