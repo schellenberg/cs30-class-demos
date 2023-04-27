@@ -18,6 +18,7 @@
 - [Walker OOP Arrays](17-walker-array)
 - [Fireworks OOP](18-fireworks)
 - [Ball Array OOP](19-ball-array)
+- [p5.play Demo](20-p5play)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
