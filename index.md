@@ -20,6 +20,7 @@
 - [Ball Array OOP](19-ball-array)
 - [p5.play Demo](20-p5play)
 - [Using Timers](21-timers)
+- [Walker OOP with Vectors!](22-vector-walker)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
