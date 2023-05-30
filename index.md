@@ -22,6 +22,7 @@
 - [Using Timers](21-timers)
 - [Walker OOP with Vectors!](22-vector-walker)
 - [Fractal Circles](23-fractal-circles)
+- [Multiple JS Files](24-multiple-js)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
