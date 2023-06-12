@@ -24,6 +24,7 @@
 - [Fractal Circles](23-fractal-circles)
 - [Multiple JS Files](24-multiple-js)
 - [Sierpinski Triangle](25-sierpinski)
+- [Using Sound](26-sound)
 
 ## Projects
 - [Arrays and Object Notation](06-array-assignment)
