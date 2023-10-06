@@ -4,12 +4,12 @@
 let theBall = {
   x: 100,
   y: 100,
-  radius: 25,
+  radius: 100,
   r: 255,
   g: 0, 
   b: 0,
   dx: -4,
-  dy: 3,
+  dy: -3,
 };
 
 function setup() {
@@ -27,16 +27,26 @@ function moveBall() {
   theBall.y += theBall.dy;
 
   // off the right side
-  if (theBall.x > width) {
+  if (theBall.x - theBall.radius > width) {
     theBall.x = 0 - theBall.radius;
   }
 
+  // off the left side
+  else if (theBall.x < 0 - theBall.radius) {
+    theBall.x = width + theBall.radius;
+  }
+
   // off the bottom
-  if (theBall.y > height) {
+  if (theBall.y - theBall.radius > height) {
     theBall.y = 0 - theBall.radius;
   }
 
+  // off the top
+  else if (theBall.y < 0 - theBall.radius) {
+    theBall.y = height + theBall.radius;
+  }
 
+  console.log(theBall.x, theBall.y);
 }
 
 function displayBall() {
