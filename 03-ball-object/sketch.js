@@ -1,25 +1,37 @@
 // Ball Object Notation Demo
 // Oct 5, 2023
 
-let theBall = {
-  x: 100,
-  y: 100,
-  radius: 100,
-  r: 255,
-  g: 0, 
-  b: 0,
-  dx: -4,
-  dy: -3,
-};
+let theBall;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  theBall = spawnBall();
 }
 
 function draw() {
   background(220);
   moveBall();
   displayBall();
+}
+
+function keyTyped() {
+  if (key === " ") {
+    theBall = spawnBall();
+  }
+}
+
+function spawnBall() {
+  let theBall = {
+    x: random(width),
+    y: random(height),
+    radius: random(15, 30),
+    r: random(255),
+    g: random(255), 
+    b: random(255),
+    dx: random(-5, 5),
+    dy: random(-5, 5),
+  };
+  return theBall;
 }
 
 function moveBall() {
