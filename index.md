@@ -6,7 +6,7 @@
 - [Ball Array](05-ball-array)
 - [Perlin Noise Ball](06-noise-ball)
 - [Translate Rotate](07-translate-rotate)
-
+- [Sounds and Images](08-sound)
 ## Projects
 - [Interactive Scene](02-scene)
 - [Arrays/Objects Assignment](04-arrays-objects-assn)
