@@ -13,8 +13,9 @@ function draw() {
   background(220);
 
   if (keyIsDown(RIGHT_ARROW)) {
-                        //don't fall off the right side
-    xOffset += 5;
+    if (xOffset + 5 < terrain.length-width) {
+      xOffset += 5;     //don't fall off the right side
+    }                    
   }
 
   if (keyIsDown(LEFT_ARROW)) {
