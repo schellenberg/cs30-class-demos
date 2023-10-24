@@ -8,6 +8,7 @@
 - [Translate Rotate](07-translate-rotate)
 - [Sounds and Images](08-sound)
 - [Terrain Generation](09-terrain)
+- [Draw a Grid](10-2d-grid)
 
 ## Projects
 - [Interactive Scene](02-scene)
