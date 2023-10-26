@@ -3,6 +3,7 @@
 let grid;
 const GRID_SIZE = 30;
 let cellSize;
+let autoPlay = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,6 +19,9 @@ function setup() {
 
 function draw() {
   background(220);
+  if (autoPlay && frameCount % 10 === 0) {
+    grid = nextTurn();
+  }
   displayGrid();
 }
 
@@ -30,6 +34,9 @@ function keyTyped() {
   }
   else if (key === " ") {
     grid = nextTurn();
+  }
+  else if (key === "a") {
+    autoPlay = !autoPlay;
   }
 }
 
