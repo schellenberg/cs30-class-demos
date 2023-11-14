@@ -14,6 +14,7 @@
 - [Character in Grid](13-character-in-grid)
 - [Platformer Demo](14-platformer)
 - [Dog OOP Demo](15-dog-oop)
+- [Walker OOP Demo](16-walker-oop)
 
 ## Projects
 - [Interactive Scene](02-scene)
