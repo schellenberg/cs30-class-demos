@@ -36,8 +36,8 @@ class Walker {
   }
 }
 
+
 let gabe;
-// let emma;
 let theWalkers = [];
 
 function setup() {
@@ -45,8 +45,6 @@ function setup() {
   background("white");
   gabe = new Walker(width/2, height/2, "blue");
   theWalkers.push(gabe);
-  // emma = new Walker(200, 400, "red");
-
 }
 
 function draw() {
@@ -57,6 +55,21 @@ function draw() {
 }
 
 function mousePressed() {
-  let gabe = new Walker(mouseX, mouseY, "blue");
-  theWalkers.push(gabe);
+  let someWalker = new Walker(mouseX, mouseY, "blue");
+  theWalkers.push(someWalker);
 }
+
+
+//original version
+// let gabe;
+
+// function setup() {
+//   createCanvas(windowWidth, windowHeight);
+//   background("white");
+//   gabe = new Walker(width/2, height/2, "blue");
+// }
+
+// function draw() {
+//   gabe.move()
+//   gabe.display();
+// }
