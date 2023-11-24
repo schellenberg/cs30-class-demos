@@ -18,6 +18,7 @@
 - [Ball OOP Demo](17-ball-oop)
 - [Connected Ball OOP Demo](18-nodes)
 - [Fireworks OOP Demo](19-fireworks)
+- [Inheritance OOP Demo](20-inheritance)
 
 ## Projects
 - [Interactive Scene](02-scene)
