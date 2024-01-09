@@ -23,6 +23,7 @@
 - [p5play Template](22-p5play)
 - [Ship OOP Solution](23-ship-oop)
 - [Recursive Circles](24-circle-recursion)
+- [Sierpinski Triangle](25-sierpinski)
 
 ## Projects
 - [Interactive Scene](02-scene)
