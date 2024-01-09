@@ -7,16 +7,26 @@ let initialTriangle = [
   {x: 750, y: 550}
 ];
 
+let depth = 0;
+let theColors = ["black", "red", "blue", "yellow", "brown", "purple"];
+
 function setup() {
   createCanvas(800, 600);
 }
 
 function draw() {
   background(220);
-  sierpinski(initialTriangle, 2);
+  sierpinski(initialTriangle, depth);
+}
+
+function mousePressed() {
+  if (depth < theColors.length - 1) {
+    depth++;
+  }
 }
 
 function sierpinski(points, degree) {
+  fill(theColors[degree]);
   triangle(points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y);
 
   if (degree > 0) {
