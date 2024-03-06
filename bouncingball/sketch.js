@@ -73,10 +73,12 @@ function bounceOffWall() {
   if (x + radius >= width || x - radius <= 0) {
     dx = -1 * dx;
     changeCircleColour();
+    console.log("bounced!");
   }
   if (y + radius >= height || y - radius <= 0) {
     dy = -1 * dy;
     changeCircleColour();
+    console.log("bounced!");
   }
 }
 
