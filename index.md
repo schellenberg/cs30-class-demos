@@ -3,6 +3,7 @@
 # Demos
 - [Traffic Light](trafficlight)
 - [Bouncing Ball](bouncingball)
+- [Collision Demo](collision)
 
 # Projects
 - [Interactive Scene](scene)
