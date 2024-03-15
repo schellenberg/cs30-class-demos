@@ -5,6 +5,7 @@
 - [Bouncing Ball](02-bouncingball)
 - [Collision Demo](03-collision)
 - [Arrays and Objects](05-circles)
+- [Generative Art](06-art)
 
 # Projects
-- [Interactive Scene](scene)
+- [Interactive Scene](04-scene)
