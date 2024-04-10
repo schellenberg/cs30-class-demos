@@ -13,13 +13,14 @@
 //             [0, 1, 0, 1],
 //             [0, 0, 0, 1]];
 
-//if randomizing the grid, do this:
 let grid;
 let cellSize;
 const GRID_SIZE = 10;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  //if randomizing the grid, do this:
   grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
   
   //this is dumb -- should check if this is the right size!
@@ -34,6 +35,21 @@ function draw() {
 function keyPressed() {
   if (key === "r") {
     grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
+  }
+}
+
+function mousePressed() {
+  let x = Math.floor(mouseX/cellSize);
+  let y = Math.floor(mouseY/cellSize);
+
+  // console.log(x, y);
+
+  //toggle the color of the cell
+  if (grid[y][x] === 0) {
+    grid[y][x] = 1;
+  }
+  else {
+    grid[y][x] = 0;
   }
 }
 
