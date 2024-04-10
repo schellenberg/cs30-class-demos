@@ -44,6 +44,13 @@ function mousePressed() {
 
   // console.log(x, y);
 
+  //don't fall off the edge of the grid...
+  if (x < GRID_SIZE && y < GRID_SIZE) {
+    toggleCell(x, y);
+  }
+}
+
+function toggleCell(x, y) {
   //toggle the color of the cell
   if (grid[y][x] === 0) {
     grid[y][x] = 1;
