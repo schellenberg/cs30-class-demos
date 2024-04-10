@@ -36,6 +36,10 @@ function keyPressed() {
   if (key === "r") {
     grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
   }
+
+  if (key === "e") {
+    grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
+  }
 }
 
 function mousePressed() {
@@ -86,6 +90,17 @@ function generateRandomGrid(cols, rows) {
       else {
         emptyArray[y].push(1);
       }
+    }
+  }
+  return emptyArray;
+}
+
+function generateEmptyGrid(cols, rows) {
+  let emptyArray = [];
+  for (let y = 0; y < rows; y++) {
+    emptyArray.push([]);
+    for (let x = 0; x < cols; x++) {
+      emptyArray[y].push(0);
     }
   }
   return emptyArray;
