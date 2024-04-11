@@ -16,14 +16,33 @@
 let grid;
 let cellSize;
 const GRID_SIZE = 10;
+let toggleStyle = "self";
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  //make the canvas the largest square that you can...
+  if (windowWidth < windowHeight) {
+    createCanvas(windowWidth, windowWidth);
+  }
+  else {
+    createCanvas(windowHeight, windowHeight);
+  }
 
   //if randomizing the grid, do this:
   grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
   
   //this is dumb -- should check if this is the right size!
+  cellSize = height/grid.length;
+}
+
+function windowResized() {
+  //make the canvas the largest square that you can...
+  if (windowWidth < windowHeight) {
+    resizeCanvas(windowWidth, windowWidth);
+  }
+  else {
+    resizeCanvas(windowHeight, windowHeight);
+  }
+
   cellSize = height/grid.length;
 }
 
@@ -40,18 +59,30 @@ function keyPressed() {
   if (key === "e") {
     grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
   }
+
+  if (key === "n") {
+    toggleStyle = "neighbours";
+  }
+
+  if (key === "s") {
+    toggleStyle = "self";
+  }
 }
 
 function mousePressed() {
   let x = Math.floor(mouseX/cellSize);
   let y = Math.floor(mouseY/cellSize);
 
-  //toggle self and NESW neighbours
+  //toggle self
   toggleCell(x, y);
-  toggleCell(x + 1, y);
-  toggleCell(x - 1, y);
-  toggleCell(x, y + 1);
-  toggleCell(x, y - 1);
+
+  // and NESW neighbours, if style is set to neighbours
+  if (toggleStyle === "neighbours") {
+    toggleCell(x + 1, y);
+    toggleCell(x - 1, y);
+    toggleCell(x, y + 1);
+    toggleCell(x, y - 1);
+  }
 }
 
 function toggleCell(x, y) {
