@@ -46,43 +46,25 @@ function mousePressed() {
   let x = Math.floor(mouseX/cellSize);
   let y = Math.floor(mouseY/cellSize);
 
-  // console.log(x, y);
-
-  //fix this so we check if we fell off the top or left sides...
-
-  //don't fall off the edge of the grid...
-  if (x < GRID_SIZE && y < GRID_SIZE) {
-    toggleCell(x, y);
-  }
-
-  // is moving one cell to right still on the grid?
-  if (x + 1 < GRID_SIZE && y < GRID_SIZE) {
-    toggleCell(x + 1, y);
-  }
-
-  // is moving one cell to left still on the grid?
-  if (x - 1 < GRID_SIZE && y < GRID_SIZE) {
-    toggleCell(x - 1, y);
-  }
-
-  // is moving one cell to up still on the grid?
-  if (x < GRID_SIZE && y + 1 < GRID_SIZE) {
-    toggleCell(x, y + 1);
-  }
-
-  // is moving one cell to down still on the grid?
-  if (x < GRID_SIZE && y - 1 < GRID_SIZE) {
-    toggleCell(x, y - 1);
-  }
+  //toggle self and NESW neighbours
+  toggleCell(x, y);
+  toggleCell(x + 1, y);
+  toggleCell(x - 1, y);
+  toggleCell(x, y + 1);
+  toggleCell(x, y - 1);
 }
 
 function toggleCell(x, y) {
-  //toggle the color of the cell
-  if (grid[y][x] === 0) {
-    grid[y][x] = 1;
-  }
-  else {
-    grid[y][x] = 0;
+  // make sure the cell you're toggling is in the grid...
+  if (x < GRID_SIZE && y < GRID_SIZE &&
+      x >= 0 && y >= 0) {
+    //toggle the color of the cell
+    if (grid[y][x] === 0) {
+      grid[y][x] = 1;
+    }
+    else {
+      grid[y][x] = 0;
+    }
   }
 }
 
