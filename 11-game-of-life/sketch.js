@@ -15,8 +15,9 @@
 
 let grid;
 let cellSize;
-const GRID_SIZE = 10;
+const GRID_SIZE = 30;
 let toggleStyle = "self";
+let isAutoPlayOn = false;
 
 function setup() {
   //make the canvas the largest square that you can...
@@ -48,6 +49,11 @@ function windowResized() {
 
 function draw() {
   background(220);
+
+  if (isAutoPlayOn && frameCount % 5 === 0) {
+    grid = updateGrid();
+  }
+
   displayGrid();
 }
 
@@ -70,6 +76,10 @@ function keyPressed() {
 
   if (key === " ") {
     grid = updateGrid();
+  }
+
+  if (key === "a") {
+    isAutoPlayOn = !isAutoPlayOn;
   }
 }
 
