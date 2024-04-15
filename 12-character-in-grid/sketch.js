@@ -12,6 +12,14 @@ let player = {
   x: 0,
   y: 0,
 };
+let grassImg;
+let pavingImg;
+
+function preload() {
+  grassImg = loadImage("grass1.png");
+  pavingImg = loadImage("paving 4.png");
+}
+
 
 function setup() {
   //make the canvas the largest square that you can...
@@ -121,15 +129,17 @@ function displayGrid() {
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid[y].length; x++) {
       if (grid[y][x] === IMPASSIBLE) {
-        fill("black");
+        // fill("black");
+        image(grassImg, x * cellSize, y * cellSize, cellSize);
       }
       else if (grid[y][x] === OPEN_TILE) {
-        fill("white");
+        // fill("white");
+        image(pavingImg, x * cellSize, y * cellSize, cellSize);
       }
       else if (grid[y][x] === PLAYER) {
         fill("red");
+        square(x * cellSize, y * cellSize, cellSize);
       }
-      square(x * cellSize, y * cellSize, cellSize);
     }
   }
 }
