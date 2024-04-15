@@ -5,6 +5,13 @@
 let grid;
 let cellSize;
 const GRID_SIZE = 10;
+const PLAYER = 9;
+const OPEN_TILE = 0;
+const IMPASSIBLE = 1;
+let player = {
+  x: 0,
+  y: 0,
+};
 
 function setup() {
   //make the canvas the largest square that you can...
@@ -20,6 +27,9 @@ function setup() {
   
   //this is dumb -- should check if this is the right size!
   cellSize = height/grid.length;
+
+  //add player to the grid
+  grid[player.y][player.x] = PLAYER;
 }
 
 function windowResized() {
@@ -47,6 +57,42 @@ function keyPressed() {
   if (key === "e") {
     grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
   }
+
+  if (key === "w") {   //up
+    movePlayer(player.x + 0, player.y - 1); //0 on x axis, -1 on y axis
+  }
+
+  if (key === "s") {   //down
+    movePlayer(player.x + 0, player.y + 1); //0 on x axis, 1 on y axis
+  }
+
+  if (key === "d") {   //right
+    movePlayer(player.x + 1, player.y + 0); //1 on x axis, 0 on y axis
+  }
+
+  if (key === "a") {   //left
+    movePlayer(player.x - 1, player.y + 0); //-1 on x axis, 0 on y axis
+  }
+}
+
+function movePlayer(x, y) {
+  //don't move off the grid, and only move into open tiles
+  if (x < GRID_SIZE && y < GRID_SIZE &&
+      x >= 0 && y >= 0 && grid[y][x] === OPEN_TILE) {
+      //previous player location
+      let oldX = player.x;
+      let oldY = player.y;
+
+      //move the player
+      player.x = x;
+      player.y = y;
+
+      //reset old location to be an empty tile
+      grid[oldY][oldX] = OPEN_TILE;
+
+      //move the player to the new spot
+      grid[player.y][player.x] = PLAYER;
+  }
 }
 
 function mousePressed() {
@@ -62,11 +108,11 @@ function toggleCell(x, y) {
   if (x < GRID_SIZE && y < GRID_SIZE &&
       x >= 0 && y >= 0) {
     //toggle the color of the cell
-    if (grid[y][x] === 0) {
-      grid[y][x] = 1;
+    if (grid[y][x] === OPEN_TILE) {
+      grid[y][x] = IMPASSIBLE;
     }
-    else {
-      grid[y][x] = 0;
+    else if (grid[y][x] === IMPASSIBLE) {
+      grid[y][x] = OPEN_TILE;
     }
   }
 }
@@ -74,13 +120,13 @@ function toggleCell(x, y) {
 function displayGrid() {
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid[y].length; x++) {
-      if (grid[y][x] === 1) {
+      if (grid[y][x] === IMPASSIBLE) {
         fill("black");
       }
-      else if (grid[y][x] === 0) {
+      else if (grid[y][x] === OPEN_TILE) {
         fill("white");
       }
-      else if (grid[y][x] === 9) {
+      else if (grid[y][x] === PLAYER) {
         fill("red");
       }
       square(x * cellSize, y * cellSize, cellSize);
