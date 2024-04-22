@@ -10,6 +10,9 @@
 - [Translate/Rotate](08-translate)
 - [Bubble Movement](09-bubble)
 - [2D Grid](10-grid)
+- [Game of Life](11-game-of-life)
+- [Character in Grid](12-character-in-grid)
+- [Platformer Demo](13-platformer)
 
 # Projects
 - [Interactive Scene](04-scene)
