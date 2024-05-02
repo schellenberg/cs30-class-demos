@@ -1,14 +1,14 @@
 // Fireworks OOP Demo
 
-const NUMBER_OF_FIREWORKS_PER_CLICK = 100;
+const NUMBER_OF_FIREWORKS_PER_CLICK = 200;
 
 class Particle {
-  constructor(x, y) {
+  constructor(x, y, dx, dy) {
     this.x = x;
     this.y = y;
     this.size = 5;
-    this.dx = random(-5, 5);
-    this.dy = random(-5, 5);
+    this.dx = dx;
+    this.dy = dy;
     this.r = 255;
     this.g = 0;
     this.b = 0;
@@ -26,6 +26,9 @@ class Particle {
     this.x += this.dx;
     this.y += this.dy;
 
+    //apply basic gravity
+    this.dy += 0.1;
+
     //fade away over time
     this.opacity--;
   }
@@ -39,6 +42,7 @@ let theFireworks = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  angleMode(DEGREES);
 }
 
 function draw() {
@@ -59,8 +63,14 @@ function draw() {
 }
 
 function mousePressed() {
+  let angle = 0;
   for (let i = 0; i < NUMBER_OF_FIREWORKS_PER_CLICK; i++) {
-    let someFirework = new Particle(mouseX, mouseY);
+    let speed = random(1, 3);
+    let dx = cos(angle) * speed;
+    let dy = sin(angle) * speed;
+    let someFirework = new Particle(mouseX, mouseY, dx, dy);
     theFireworks.push(someFirework);
+
+    angle += 360 / NUMBER_OF_FIREWORKS_PER_CLICK;
   }
 }
