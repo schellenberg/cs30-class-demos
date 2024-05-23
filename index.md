@@ -18,6 +18,7 @@
 - [Fireworks](15-fireworks)
 - [Connected Nodes OOP](16-nodes)
 - [p5play Demo](17-p5play)
+- [Clickable Button Demo](18-clickable)
 
 # Projects
 - [Interactive Scene](04-scene)
