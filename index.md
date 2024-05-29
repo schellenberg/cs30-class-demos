@@ -20,6 +20,7 @@
 - [p5play Demo](17-p5play)
 - [Clickable Button Demo](18-clickable)
 - [Recursive Circles](19-recursive-circles)
+- [Sierpinski Triangle](20-sierpinski-triangle)
 
 # Projects
 - [Interactive Scene](04-scene)
