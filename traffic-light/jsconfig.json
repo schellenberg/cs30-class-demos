@@ -3,5 +3,5 @@
     "*.js",
     "libraries/*.js",
     "c:\\Users\\schellenbergd\\.vscode\\extensions\\wmcicompsci.cs30-p5-1.7.5\\p5types\\global.d.ts"
-, "eslint.config.mjs"  ]
+  ]
 }
