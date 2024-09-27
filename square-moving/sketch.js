@@ -6,6 +6,7 @@ let y = 0;
 let squareSize = 50;
 let speed = 5;
 let state = "right";
+let gameState = "start";
 
 function setup() {
   createCanvas(400, 400);
@@ -13,8 +14,25 @@ function setup() {
 
 function draw() {
   background(220);
-  moveSquare();
-  displaySquare();
+  if (gameState === "start") {
+    showStartScreen();
+  }
+  else if (gameState === "moving square") {
+    moveSquare();
+    displaySquare();
+  }
+}
+
+function mousePressed() {
+  if (gameState === "start") {
+    gameState = "moving square";
+  }
+}
+
+function showStartScreen() {
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  text("Click to start", width/2, height/2);
 }
 
 function moveSquare() {
