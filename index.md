@@ -4,6 +4,7 @@
 - [Square Moving Around Screen](square-moving)
 - [Image Demo](image-demo)
 - [Traffic Light](traffic-light)
+- [Bouncing Balls](bouncing-balls)
 
 
 ## Projects
