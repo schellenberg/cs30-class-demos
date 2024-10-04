@@ -1,18 +1,25 @@
 // Generative Art Demo
 // Oct 4, 2024
 
-const TILE_SIZE = 100;
-let someTile;
+const TILE_SIZE = 15;
+let theTiles = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  someTile = spawnTile(200, 300);
+  for (let x = 0; x < width; x += TILE_SIZE) {
+    for (let y = 0; y < height; y += TILE_SIZE) {
+      let someTile = spawnTile(x, y);
+      theTiles.push(someTile);
+    }
+  }
 }
 
 function draw() {
   background(220);
 
-  line(someTile.x1, someTile.y1, someTile.x2, someTile.y2);
+  for (let myTile of theTiles) {
+    line(myTile.x1, myTile.y1, myTile.x2, myTile.y2);
+  }
 }
 
 function spawnTile(x, y) {
