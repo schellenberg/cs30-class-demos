@@ -1,13 +1,13 @@
 # Comp Sci 30
 
 ## Demos
-- [Square Moving Around Screen](square-moving)
-- [Image Demo](image-demo)
-- [Traffic Light](traffic-light)
-- [Bouncing Balls](bouncing-balls)
-- [Generative Art](art)
-- [Perlin Noise Ball](perlin)
-- [Terrain Generation](terrain)
+- [Square Moving Around Screen](01-square-moving)
+- [Image Demo](02-image-demo)
+- [Traffic Light](03-traffic-light)
+- [Bouncing Balls](04-bouncing-balls)
+- [Generative Art](05-art)
+- [Perlin Noise Ball](06-perlin)
+- [Terrain Generation](07-terrain)
 
 ## Projects
 
