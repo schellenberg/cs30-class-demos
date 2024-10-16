@@ -9,6 +9,7 @@
 - [Perlin Noise Ball](06-perlin)
 - [Terrain Generation](07-terrain)
 - [Bubble Demo](08-bubble)
+- [Sound Effects Demo](09-sound-fx)
 
 ## Projects
 
