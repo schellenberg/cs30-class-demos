@@ -28,6 +28,16 @@ function draw() {
   displayGrid();
 }
 
+function keyPressed() {
+  if (key === "r") {
+    grid = generateRandomGrid(GRID_SIZE, GRID_SIZE);
+  }
+  if (key === "e") {
+    grid = generateEmptyGrid(GRID_SIZE, GRID_SIZE);
+  }
+}
+
+
 function displayGrid() {
   for (let y = 0; y < GRID_SIZE; y++) {
     for (let x = 0; x < GRID_SIZE; x++) {
@@ -55,6 +65,17 @@ function generateRandomGrid(cols, rows) {
       else {
         newGrid[y].push(0);
       }
+    }
+  }
+  return newGrid;
+}
+
+function generateEmptyGrid(cols, rows) {
+  let newGrid = [];
+  for (let y = 0; y < rows; y++) {
+    newGrid.push([]);
+    for (let x = 0; x < cols; x++) {
+      newGrid[y].push(0);
     }
   }
   return newGrid;
