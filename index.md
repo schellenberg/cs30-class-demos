@@ -11,6 +11,7 @@
 - [Bubble Demo](08-bubble)
 - [Sound Effects Demo](09-sound-fx)
 - [Translate/Rotate](10-translate)
+- [Grid Demo](11-grid)
 
 ## Projects
 
