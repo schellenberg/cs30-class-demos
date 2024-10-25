@@ -10,8 +10,15 @@
 
 let grid;
 let cellSize;
-const GRID_SIZE = 10;
+const GRID_SIZE = 40;
 let shouldToggleNeighbours = false;
+let autoPlayIsOn = false;
+let renderOnFrameNumber =  5;
+let gosper;
+
+function preload() {
+  gosper = loadJSON("gosper-gun.json");
+}
 
 function setup() {
   if (windowWidth < windowHeight) {
@@ -36,6 +43,9 @@ function windowResized() {
 
 function draw() {
   background(220);
+  if (autoPlayIsOn && frameCount % renderOnFrameNumber === 0) {
+    grid = updateGrid();
+  }
   displayGrid();
 }
 
@@ -79,6 +89,12 @@ function keyPressed() {
   }
   if (key === " ") {
     grid = updateGrid();
+  }
+  if (key === "a") {
+    autoPlayIsOn = !autoPlayIsOn;
+  }
+  if (key === "g") {
+    grid = gosper;
   }
 }
 
