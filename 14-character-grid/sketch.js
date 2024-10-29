@@ -12,7 +12,13 @@ let thePlayer = {
   x: 0, 
   y: 0,
 };
+let grassImg;
+let pathImg;
 
+function preload() {
+  grassImg = loadImage("grass.jpg");
+  pathImg = loadImage("path.jpg");
+}
 
 function setup() {
   if (windowWidth < windowHeight) {
@@ -91,7 +97,7 @@ function keyPressed() {
 function movePlayer(x, y) {
   //don't move off grid, and only move in open tiles
   if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE && grid[y][x] === OPEN_TILE) {
-    
+
     //previous player location
     let oldX = thePlayer.x;
     let oldY = thePlayer.y;
@@ -114,15 +120,17 @@ function displayGrid() {
   for (let y = 0; y < GRID_SIZE; y++) {
     for (let x = 0; x < GRID_SIZE; x++) {
       if (grid[y][x] === IMPASSIBLE) {
-        fill("black");
+        // fill("black");
+        image(grassImg, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[y][x] === OPEN_TILE) {
-        fill("white");
+        // fill("white");
+        image(pathImg, x * cellSize, y * cellSize, cellSize, cellSize);
       }
       else if (grid[y][x] === PLAYER) {
         fill("red");
+        square(x * cellSize, y * cellSize, cellSize);
       }
-      square(x * cellSize, y * cellSize, cellSize);
     }
   }
 }
