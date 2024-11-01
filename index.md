@@ -14,6 +14,7 @@
 - [Grid Demo](11-grid)
 - [Game of Life](12-game-of-life)
 - [Rectangular Grid](13-rectangle-grid)
+- [Character In Grid](14-character-grid)
 
 ## Projects
 
