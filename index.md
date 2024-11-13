@@ -15,7 +15,8 @@
 - [Game of Life](12-game-of-life)
 - [Rectangular Grid](13-rectangle-grid)
 - [Character In Grid](14-character-grid)
-- [Platformer Loading From Text File](15-platformer/)
+- [Platformer Loading From Text File](15-platformer)
+- [Walker OOP](16-walker-oop)
 
 ## Projects
 
