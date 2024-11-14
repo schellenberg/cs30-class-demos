@@ -17,6 +17,7 @@
 - [Character In Grid](14-character-grid)
 - [Platformer Loading From Text File](15-platformer)
 - [Walker OOP](16-walker-oop)
+- [Walker OOP Array](17-walker-oop-array)
 
 ## Projects
 
