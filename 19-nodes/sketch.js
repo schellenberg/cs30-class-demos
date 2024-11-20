@@ -11,8 +11,14 @@ function setup() {
 function draw() {
   background("white");
 
+  //draw lines first
   for (let point of points) {
-    point.move();
+    point.update();
+    point.connectTo(points);
+  }
+  
+  //draw circles afterwards, so they're on top
+  for (let point of points) {
     point.display();
   }
 }
@@ -33,12 +39,45 @@ class MovingPoint {
     this.xTime = random(1000);
     this.yTime = random(1000);
     this.deltaTime = 0.01;
+    this.reach = 150;
+    this.minRadius = 15;
+    this.maxRadius = 50;
   }
 
   display() {
     noStroke();
     fill(this.color);
     circle(this.x, this.y, this.radius * 2);
+  }
+
+  update() {
+    this.move();
+    this.wrapAroundScreen();
+    this.adjustSizeWithMouse();
+  }
+
+  connectTo(pointsArray) {
+    for (let otherPoint of pointsArray) {
+      //avoid drawing line to self
+      if (this !== otherPoint) {
+        let pointDistance = dist(this.x, this.y, otherPoint.x, otherPoint.y);
+        if (pointDistance < this.reach) {
+          stroke(this.color);
+          line(this.x, this.y, otherPoint.x, otherPoint.y);
+        }
+      }
+    }
+  }
+
+  adjustSizeWithMouse() {
+    let mouseDistance = dist(this.x, this.y, mouseX, mouseY);
+    if (mouseDistance < this.reach) {
+      let theSize = map(mouseDistance, 0, this.reach, this.maxRadius, this.minRadius);
+      this.radius = theSize;
+    }
+    else {
+      this.radius = this.minRadius;
+    }
   }
 
   move() {
@@ -57,5 +96,25 @@ class MovingPoint {
     //move on time axis
     this.xTime += this.deltaTime;
     this.yTime += this.deltaTime;
+  }
+
+  wrapAroundScreen() {
+    //wrap around screen if you fall off
+    if (this.x < 0) {
+      //fell of left side
+      this.x += width;
+    }
+    if (this.x > width) {
+      //fell of right side
+      this.x -= width;
+    }
+    if (this.y < 0) {
+      //fell off the top
+      this.y += height;
+    }
+    if (this.y > height) {
+      //fell off bottom
+      this.y -= height;
+    }
   }
 }
