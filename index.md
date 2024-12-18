@@ -23,6 +23,8 @@
 - [Collide 2d Library](20-collide)
 - [LocalStorage Demo](21-local-storage)
 - [Inheritance Demo](22-inheritance)
+- [Fractal Circles](23-circles)
+- [Sierpinksi Triangle](24-triangle)
 
 ## Projects
 
