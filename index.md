@@ -2,4 +2,4 @@
 - [Color Swap Timer](01-color-time-swap)
 
 # CS30 Projects
-
+- [Interactive Scene](interactive-scene)
