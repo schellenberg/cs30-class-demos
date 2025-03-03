@@ -13,7 +13,7 @@ const YELLOW_LIGHT_DURATION = 1000;
 const RED_LIGHT_DURATION = 4000;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -21,6 +21,14 @@ function draw() {
   drawOutlineOfLights();
   changeStateIfNeeded();
   displayCorrectLight();
+  writeColor();
+}
+
+function writeColor() {
+  textSize(100);
+  fill("black");
+  textAlign(CENTER, CENTER);
+  text(lightState, width/2, height/2 + 180);
 }
 
 function changeStateIfNeeded() {
