@@ -2,17 +2,25 @@
 // Using Object Notation and Arrays
 // March 7, 2025
 
-let someLine;
+const LINE_SIZE = 25;
+let lineArray = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  someLine = spawnLine(width/2, height/2, 400);
+  for (let x = 0; x < width; x += LINE_SIZE) {
+    for (let y = 0; y < height; y += LINE_SIZE) {
+      let someLine = spawnLine(x, y, LINE_SIZE);
+      lineArray.push(someLine);
+    }
+  }
 }
 
 function draw() {
   background(220);
 
-  line(someLine.x1, someLine.y1, someLine.x2, someLine.y2);
+  for (let aLine of lineArray) {
+    line(aLine.x1, aLine.y1, aLine.x2, aLine.y2);
+  }
 }
 
 function spawnLine(x, y, theSize) {
