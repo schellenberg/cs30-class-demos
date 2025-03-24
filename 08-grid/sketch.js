@@ -29,9 +29,28 @@ function draw() {
   displayGrid();
 }
 
+function mousePressed() {
+  let x = Math.floor(mouseX/cellSize);
+  let y = Math.floor(mouseY/cellSize);
+
+  toggleCell(x, y);
+}
+
+function toggleCell(x, y) {
+  if (grid[y][x] === 0) {
+    grid[y][x] = 1;
+  }
+  else if (grid[y][x] === 1) {
+    grid[y][x] = 0;
+  }
+}
+
 function keyPressed() {
   if (key === "r") {
     grid = generateRandomGrid(SQUARE_DIMENSIONS, SQUARE_DIMENSIONS);
+  }
+  else if (key === "e") {
+    grid = generateGrid(SQUARE_DIMENSIONS, SQUARE_DIMENSIONS);
   }
 }
 
