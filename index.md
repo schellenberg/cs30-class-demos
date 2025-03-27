@@ -10,6 +10,7 @@
 - [Grid Neighbours](09-neighbours)
 - [Rectangle Grid](10-rectangle-grid)
 - [Game of Life](11-game-of-life)
+- [Character Moving in Grid](12-character-grid)
 
 # CS30 Projects
 - [Interactive Scene](interactive-scene)
