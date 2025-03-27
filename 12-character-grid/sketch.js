@@ -13,6 +13,13 @@ let thePlayer = {
   x: 0,
   y: 0,
 };
+let grassImg;
+let pathImg;
+
+function preload() {
+  grassImg = loadImage("grass.png");
+  pathImg = loadImage("paving.png");
+}
 
 
 function setup() {
@@ -50,12 +57,21 @@ function keyPressed() {
 }
 
 function movePlayer(x, y) {
-  //keep track of where the player is now
-  thePlayer.x = x;
-  thePlayer.y = y;
-
-  //put player on grid
-  grid[thePlayer.y][thePlayer.x] = PLAYER;
+  if (x >= 0 && x < cols && y >= 0 && y <= rows && grid[y][x] === OPEN_TILE) {
+    //previous player location
+    let oldX = thePlayer.x;
+    let oldY = thePlayer.y;
+  
+    //keep track of where the player is now
+    thePlayer.x = x;
+    thePlayer.y = y;
+  
+    //reset the old spot to be open
+    grid[oldY][oldX] = OPEN_TILE;
+  
+    //put player on grid
+    grid[thePlayer.y][thePlayer.x] = PLAYER;
+  }
 }
 
 function mousePressed() {
@@ -82,15 +98,17 @@ function displayGrid() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       if (grid[y][x] === OPEN_TILE) {
-        fill("white");
+        // fill("white");
+        image(pathImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
       else if (grid[y][x] === IMPASSIBLE) {
-        fill("black");
+        // fill("black");
+        image(grassImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
       else if (grid[y][x] === PLAYER) {
         fill("red");
+        square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
       }
-      square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
     }
   }
 }
