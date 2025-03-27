@@ -6,17 +6,56 @@ const CELL_SIZE = 50;
 let grid;
 let rows;
 let cols;
+const OPEN_TILE = 0;
+const IMPASSIBLE = 1;
+const PLAYER = 9;
+let thePlayer = {
+  x: 0,
+  y: 0,
+};
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cols = Math.ceil(width/CELL_SIZE);
   rows = Math.ceil(height/CELL_SIZE);
   grid = generateRandomGrid(cols, rows);
+
+  //add the player to the grid
+  grid[thePlayer.y][thePlayer.x] = PLAYER;
 }
 
 function draw() {
   background(220);
   displayGrid();
+}
+
+function keyPressed() {
+  if (key === "w") {
+    //move up
+    movePlayer(thePlayer.x, thePlayer.y - 1);
+  }
+  if (key === "s") {
+    //move down
+    movePlayer(thePlayer.x, thePlayer.y + 1);
+  }
+  if (key === "a") {
+    //move left
+    movePlayer(thePlayer.x - 1, thePlayer.y);
+  }
+  if (key === "d") {
+    //move right
+    movePlayer(thePlayer.x + 1, thePlayer.y);
+  }
+}
+
+function movePlayer(x, y) {
+  //keep track of where the player is now
+  thePlayer.x = x;
+  thePlayer.y = y;
+
+  //put player on grid
+  grid[thePlayer.y][thePlayer.x] = PLAYER;
 }
 
 function mousePressed() {
@@ -30,11 +69,11 @@ function mousePressed() {
 function toggleCell(x, y) {
   //make sure cell you're toggling is actually in the grid
   if (x >= 0 && x < cols && y >= 0 && y < rows) {
-    if (grid[y][x] === 0) {
-      grid[y][x] = 1;
+    if (grid[y][x] === OPEN_TILE) {
+      grid[y][x] = IMPASSIBLE;
     }
-    else if (grid[y][x] === 1) {
-      grid[y][x] = 0;
+    else if (grid[y][x] === IMPASSIBLE) {
+      grid[y][x] = OPEN_TILE;
     }
   }
 }
@@ -42,11 +81,14 @@ function toggleCell(x, y) {
 function displayGrid() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
-      if (grid[y][x] === 0) {
+      if (grid[y][x] === OPEN_TILE) {
         fill("white");
       }
-      else if (grid[y][x] === 1) {
+      else if (grid[y][x] === IMPASSIBLE) {
         fill("black");
+      }
+      else if (grid[y][x] === PLAYER) {
+        fill("red");
       }
       square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
     }
