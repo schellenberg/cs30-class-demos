@@ -12,6 +12,7 @@
 - [Game of Life](11-game-of-life)
 - [Character Moving in Grid](12-character-grid)
 - [Platformer/Loading Text Files](13-platformer)
+- [Timer Library](14-timer)
 
 # CS30 Projects
 - [Interactive Scene](interactive-scene)
