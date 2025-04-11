@@ -13,6 +13,7 @@
 - [Character Moving in Grid](12-character-grid)
 - [Platformer/Loading Text Files](13-platformer)
 - [Timer Library](14-timer)
+- [Walker OOP](15-walker)
 
 # CS30 Projects
 - [Interactive Scene](interactive-scene)
