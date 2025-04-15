@@ -15,6 +15,7 @@
 - [Timer Library](14-timer)
 - [Walker OOP](15-walker)
 - [Fireworks OOP](16-fireworks)
+- [Connected Nodes OOP](17-nodes)
 
 # CS30 Projects
 - [Interactive Scene](interactive-scene)
