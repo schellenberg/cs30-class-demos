@@ -12,10 +12,21 @@ function setup() {
 function draw() {
   background("white");
 
+  //draw lines first
   for (let node of nodes) {
     node.update();
+    node.connectTo(nodes);
+  }
+
+  //draw circles second, so the circles are over the lines
+  for (let node of nodes) {
     node.display();
   }
+}
+
+function mousePressed() {
+  let somePoint = new MovingPoint(mouseX, mouseY);
+  nodes.push(somePoint);
 }
 
 class MovingPoint {
@@ -28,6 +39,9 @@ class MovingPoint {
     this.yTime = random(1000);
     this.deltaTime = 0.01;
     this.color = color(random(255), random(255), random(255));
+    this.reach = 150;
+    this.maxRadius = 50;
+    this.minRadius = 15;
   }
 
   display() {
@@ -38,6 +52,31 @@ class MovingPoint {
 
   update() {
     this.move();
+    this.wrapAroundScreen();
+    this.adjustSizeWithMouse();
+  }
+
+  adjustSizeWithMouse() {
+    let mouseDistance = dist(mouseX, mouseY, this.x, this.y);
+    if (mouseDistance < this.reach) {
+      let theSize = map(mouseDistance, 0, this.reach, this.maxRadius, this.minRadius);
+      this.radius = theSize;
+    }
+    else {
+      this.radius = this.minRadius;
+    }
+  }
+
+  connectTo(nodesArray) {
+    for (let otherNode of nodesArray) {
+      if (this !== otherNode) {
+        let distanceAway = dist(this.x, this.y, otherNode.x, otherNode.y);
+        if (distanceAway < this.reach) {
+          stroke(this.color);
+          line(this.x, this.y, otherNode.x, otherNode.y);
+        }
+      }
+    }
   }
 
   move() {
@@ -56,5 +95,21 @@ class MovingPoint {
     //move on time axis
     this.xTime += this.deltaTime;
     this.yTime += this.deltaTime;
+  }
+
+  wrapAroundScreen() {
+    //wrap around screen if you fall off
+    if (this.x < 0) {
+      this.x += width;
+    }
+    if (this.x > width) {
+      this.x -= width;
+    }
+    if (this.y < 0) {
+      this.y += height;
+    }
+    if (this.y > height) {
+      this.y -= height;
+    }
   }
 }
