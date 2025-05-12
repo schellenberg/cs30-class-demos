@@ -18,6 +18,7 @@
 - [Connected Nodes OOP](17-nodes)
 - [Translate/Rotate Demo](18-rotate)
 - [Local Storage](19-local-storage)
+- [2d Collide Demo](20-2d-collide)
 
 # CS30 Projects
 - [Interactive Scene](interactive-scene)
