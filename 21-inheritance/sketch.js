@@ -11,13 +11,24 @@ function setup() {
     let y = random(height);
 
     let choice = random(100);
-    if (choice < 50) {
+    if (choice < 25) {
       let someShape = new Shape(x, y, someColor);
       theShapes.push(someShape);
     }
-    else {
+    else if (choice < 50) {
       let radius = random(20, 50);
       let someCircle = new Circle(x, y, someColor, radius);
+      theShapes.push(someCircle);
+    }
+    else if (choice < 75) {
+      let size = random(20, 50);
+      let someSquare = new Square(x, y, someColor, size);
+      theShapes.push(someSquare);
+    }
+    else {
+      let radius = random(20, 50);
+      let speed = random(2, 10);
+      let someCircle = new MovingCircle(x, y, someColor, radius, speed);
       theShapes.push(someCircle);
     }
   }
@@ -58,3 +69,37 @@ class Circle extends Shape {
   }
 }
 
+class Square extends Shape {
+  constructor(x, y, color, size) {
+    super(x, y, color);
+    this.size = size;
+  }
+
+  display() { 
+    noStroke();
+    fill(this.color);
+    rectMode(CENTER);
+    rect(this.x, this.y, this.size, this.size);
+  }
+}
+
+class MovingCircle extends Circle {
+  constructor(x, y, color, radius, speed) {
+    super(x, y, color, radius);
+    this.speed = speed;
+  }
+
+  update() {
+    this.x += this.speed;
+
+    //teleport back to left side
+    if (this.x > width) {
+      this.x = -this.radius;
+    }
+  }
+
+  display() {
+    this.update();
+    super.display();
+  }
+}
