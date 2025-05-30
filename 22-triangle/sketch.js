@@ -8,17 +8,28 @@ let initialTriangle = [
   {x: 1200, y: 800}
 ];
 
+let theDepth = 0;
+let theColors = ["blue", "cyan", "green", "purple", "red", "yellow", "orange", "brown", "gray"];
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  background(220);
+  sierpinski(initialTriangle, theDepth);
 }
 
 function draw() {
-  background(220);
-  sierpinski(initialTriangle, 2);
+}
+
+function mousePressed() {
+  if (theDepth < 8) {
+    theDepth++;
+    background(220);
+    sierpinski(initialTriangle, theDepth);
+  }
 }
 
 function sierpinski(points, depth) {
-  //shell triangle
+  fill(theColors[depth]);
   triangle(points[0].x, points[0].y,
            points[1].x, points[1].y,
            points[2].x, points[2].y,
