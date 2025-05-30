@@ -27,11 +27,23 @@ function sierpinski(points, depth) {
   //escape clause
   if (depth > 0) {
     //pattern -- draw the three new triangles
+    //bottom left
     sierpinski([midpoint(points[0], points[1]),
                 points[1],
                 midpoint(points[1], points[2])],
                 depth - 1);
 
+    //top
+    sierpinski([midpoint(points[0], points[1]),
+                points[0],
+                midpoint(points[0], points[2])],
+                depth - 1);
+
+    //bottom right
+    sierpinski([midpoint(points[1], points[2]),
+                points[2],
+                midpoint(points[0], points[2])],
+                depth - 1);
   }
 
 }
