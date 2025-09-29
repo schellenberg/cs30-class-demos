@@ -15,8 +15,9 @@ function setup() {
 }
 
 function draw() {
+  //thing
   background(220);
-  showChessboard();
+  showChessboard(); 
 }
 
 function windowResized() {
