@@ -39,7 +39,7 @@ function showChessboard() {
         fill("white");
       }
       else {
-        fill("black");
+        fill("red");
       }
       square(x*cellSize, y*cellSize, cellSize);
       isWhite = !isWhite;
