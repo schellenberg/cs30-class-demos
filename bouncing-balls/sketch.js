@@ -5,7 +5,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
   // randomizeColor();
-  spawnBall();
+  spawnBall(width/2, height/2);
 }
 
 function draw() {
@@ -17,13 +17,13 @@ function draw() {
 }
 
 function mousePressed() {
-  spawnBall();
+  spawnBall(mouseX, mouseY);
 }
 
-function spawnBall() {
+function spawnBall(_x, _y) {
   let newBall = {
-    x: width/2,
-    y: height/2,
+    x: _x,
+    y: _y,
     dx: random(-3, 3),
     dy: random(-3, 3),
     radius: random(25, 75),
@@ -46,19 +46,19 @@ function bounceIfNeeded() {
     //should i bounce?
     if (ball.x < 0 + ball.radius || ball.x > width - ball.radius) {
       ball.dx = ball.dx * -1;
-      // randomizeColor();
+      randomizeColor(ball);
     }
     if (ball.y < 0 + ball.radius || ball.y > height - ball.radius) {
       ball.dy = ball.dy * -1;
-      // randomizeColor();
+      randomizeColor(ball);
     }
   }
 }
 
-function randomizeColor() {
-  r = random(255);
-  g = random(255);
-  b = random(255);
+function randomizeColor(theBall) {
+  theBall.r = random(255);
+  theBall.g = random(255);
+  theBall.b = random(255);
 }
 
 function showCircle() {
