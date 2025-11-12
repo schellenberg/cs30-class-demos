@@ -12,6 +12,7 @@
 - [Game of Life](09-game-of-life)
 - [Character in Grid](10-character-in-grid)
 - [Platformer Skeleton Demo](11-platformer-skeleton)
+- [Basic OOP](12-basic-oop)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
