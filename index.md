@@ -13,6 +13,7 @@
 - [Character in Grid](10-character-in-grid)
 - [Platformer Skeleton Demo](11-platformer-skeleton)
 - [Basic OOP](12-basic-oop)
+- [Walker OOP](13-walker-oop)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
