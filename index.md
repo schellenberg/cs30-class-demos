@@ -14,6 +14,7 @@
 - [Platformer Skeleton Demo](11-platformer-skeleton)
 - [Basic OOP](12-basic-oop)
 - [Walker OOP](13-walker-oop)
+- [Fireworks OOP](14-fireworks)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
