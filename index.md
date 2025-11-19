@@ -17,6 +17,7 @@
 - [Fireworks OOP](14-fireworks)
 - [Nodes OOP](15-nodes)
 - [OOP Inheritance](16-inheritance)
+- [Shape Inheritance](17-shape-inheritance)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
