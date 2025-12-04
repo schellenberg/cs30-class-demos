@@ -18,6 +18,7 @@
 - [Nodes OOP](15-nodes)
 - [OOP Inheritance](16-inheritance)
 - [Shape Inheritance](17-shape-inheritance)
+- [Collision Demo](18-collide2d)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
