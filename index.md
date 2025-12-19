@@ -19,6 +19,7 @@
 - [OOP Inheritance](16-inheritance)
 - [Shape Inheritance](17-shape-inheritance)
 - [Collision Demo](18-collide2d)
+- [Sierpinski Triangle](19-sierpinski)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
