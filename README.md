@@ -4,7 +4,8 @@ Live-code demos for Computer Science 30 at WMCI.
 ## p5js Web Editor Demos
 At the start of the semester, I will use the p5js web editor. You can find those demos here:
 
-[p5js web editor demos](https://editor.p5js.org/schellenberg/collections/WnL6XuxIu)
+[Period 2 p5js web editor demos](https://editor.p5js.org/schellenberg/collections/ISqSWyyHq)
+[Period 5 p5js web editor demos](https://editor.p5js.org/schellenberg/collections/o3gInvphc)
 
 ## Usage
 
