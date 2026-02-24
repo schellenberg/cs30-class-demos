@@ -9,8 +9,8 @@ At the start of the semester, I will use the p5js web editor. You can find those
 
 ## VS Code Demos
 For the rest of the semester, the live versions of the demos can be seen here (to see the code, just navigate through the folders above):
-- [Period 2 VS Code Demos](https://schellenberg.github.io/cs30-class-demos/Period 2)
-- [Period 5 VS Code Demos](https://schellenberg.github.io/cs30-class-demos/Period 5)
+- [Period 2 VS Code Demos](https://schellenberg.github.io/cs30-class-demos/Period-2)
+- [Period 5 VS Code Demos](https://schellenberg.github.io/cs30-class-demos/Period-5)
 
 ## Usage
 
