@@ -5,6 +5,7 @@
 - [Scope](02-scope)
 - [Images](03-images)
 - [Ball Array](04-ball-array)
+- [Generative Art](05-art)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
