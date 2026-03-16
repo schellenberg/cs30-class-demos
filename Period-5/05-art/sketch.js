@@ -4,7 +4,7 @@ let theTiles = [];
 const THE_SIZE = 25;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth * 0.8, windowHeight * 0.8);
 
   for (let y = THE_SIZE/2; y <= height; y += THE_SIZE) {
     for (let x = THE_SIZE/2; x <= width; x += THE_SIZE) {
