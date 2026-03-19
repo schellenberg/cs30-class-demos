@@ -1,27 +1,27 @@
-// 2D Grid Demo
+// Grid Demo
 //learning 2d arrays
 
-//use this if hard coded grid
-// let theGrid = [[1, 0, 1, 0],
+//use this if hard coding the grid
+// let theGrid = [[0, 0, 1, 0],
 //                [1, 0, 1, 0],
-//                [0, 1, 0, 1],
-//                [0, 0, 1, 1]];
-// const SQUARE_DIMENSION = theGrid.length;
+//                [0, 1, 1, 0],
+//                [0, 1, 0, 1]];
+// const SQUARE_DIMENSIONS = theGrid.length;
 
-//use this to randomize grid
+//use this if randomizing the grid
+const SQUARE_DIMENSIONS = 15;
 let theGrid;
-const SQUARE_DIMENSION = 10;
 let cellSize;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  if (width > height) {
-    cellSize = height/SQUARE_DIMENSION;
+  if (width < height) {
+    cellSize = width / SQUARE_DIMENSIONS;
   }
   else {
-    cellSize = width/SQUARE_DIMENSION;
+    cellSize = height / SQUARE_DIMENSIONS;
   }
-  theGrid = generateRandomGrid(SQUARE_DIMENSION, SQUARE_DIMENSION);
+  theGrid = randomizeGrid(SQUARE_DIMENSIONS, SQUARE_DIMENSIONS);
 }
 
 function draw() {
@@ -47,12 +47,12 @@ function toggleCell(x, y) {
 }
 
 function showGrid() {
-  for (let y = 0; y < SQUARE_DIMENSION; y++) {
-    for (let x = 0; x < SQUARE_DIMENSION; x++) {
+  for (let y = 0; y < SQUARE_DIMENSIONS; y++) {
+    for (let x = 0; x < SQUARE_DIMENSIONS; x++) {
       if (theGrid[y][x] === 1) {
         fill("black");
       }
-      else if (theGrid[y][x] === 0) {
+      if (theGrid[y][x] === 0) {
         fill("white");
       }
       square(x * cellSize, y * cellSize, cellSize);
@@ -60,7 +60,7 @@ function showGrid() {
   }
 }
 
-function generateRandomGrid(cols, rows) {
+function randomizeGrid(cols, rows) {
   let newGrid = [];
   for (let y = 0; y < rows; y++) {
     newGrid.push([]);
