@@ -1,6 +1,8 @@
 // Game of Life
 
 const CELL_SIZE = 20;
+const RENDER_ON_FRAME = 3;
+let autoPlayIsOn = true;
 let grid;
 let rows;
 let cols;
@@ -14,7 +16,9 @@ function setup() {
 
 function draw() {
   background(220);
-  grid = updateGrid();
+  if (autoPlayIsOn && frameCount % RENDER_ON_FRAME === 0) {
+    grid = updateGrid();
+  }
   displayGrid();
 }
 
@@ -32,6 +36,12 @@ function keyPressed() {
   }
   if (key === "e") {
     grid = generateEmptyGrid(cols, rows);
+  }
+  if (key === "a") {
+    autoPlayIsOn = !autoPlayIsOn;
+  }
+  if (key === " ") {
+    grid = updateGrid();
   }
 }
 
