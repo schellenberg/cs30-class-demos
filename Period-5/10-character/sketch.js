@@ -1,6 +1,6 @@
 // Character in Grid Demo
 
-const CELL_SIZE = 100;
+const CELL_SIZE = 40;
 const OPEN_TILE = 0;
 const IMPASSIBLE = 1;
 const PLAYER = 9;
@@ -11,6 +11,14 @@ let thePlayer = {
   x: 0,
   y: 0,
 };
+let pathImg;
+let grassImg;
+
+
+function preload() {
+  pathImg = loadImage("paving.jpg");
+  grassImg = loadImage("grass.jpg");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -91,15 +99,17 @@ function displayGrid() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       if (grid[y][x] === OPEN_TILE) {
-        fill("white");
+        // fill("white");
+        image(pathImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
       else if (grid[y][x] === IMPASSIBLE) {
-        fill("black");
+        // fill("black");
+        image(grassImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
       else if (grid[y][x] === PLAYER) {
         fill("red");
+        square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
       }
-      square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
     }
   }
 }
