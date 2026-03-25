@@ -1,6 +1,6 @@
 // Character In Grid Demo
 
-const CELL_SIZE = 100;
+const CELL_SIZE = 50;
 const OPEN_TILE = 0;
 const IMPASSIBLE = 1;
 const PLAYER = 9;
@@ -11,6 +11,13 @@ let thePlayer = {
   x: 0,
   y: 0,
 };
+let grassImg;
+let pathImg;
+
+function preload() {
+  grassImg = loadImage("grass.png");
+  pathImg = loadImage("paving.png");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -38,11 +45,44 @@ function mousePressed() {
 function keyPressed() {
   if (key === "r") {
     grid = generateRandomGrid(cols, rows);
+    grid[thePlayer.y][thePlayer.x] = PLAYER;
   }
   if (key === "e") {
     grid = generateEmptyGrid(cols, rows);
+    grid[thePlayer.y][thePlayer.x] = PLAYER;
+  }
+  if (key === "s") {
+    movePlayer(thePlayer.x, thePlayer.y + 1);
+  }
+  if (key === "w") {
+    movePlayer(thePlayer.x, thePlayer.y - 1);
+  }
+  if (key === "d") {
+    movePlayer(thePlayer.x + 1, thePlayer.y);
+  }
+  if (key === "a") {
+    movePlayer(thePlayer.x - 1, thePlayer.y);
   }
 }
+
+function movePlayer(x, y) {
+  if (x >= 0 && x < cols && y >= 0 && y < rows && grid[y][x] === OPEN_TILE) {
+    //previous position
+    let oldX = thePlayer.x;
+    let oldY = thePlayer.y;
+
+    //moving the player to new location
+    thePlayer.x = x;
+    thePlayer.y = y;
+  
+    //adding player to grid
+    grid[thePlayer.y][thePlayer.x] = PLAYER;
+
+    //reset the old location to be an open tile
+    grid[oldY][oldX] = OPEN_TILE;
+  }
+}
+
 
 function toggleCell(x, y) {
   //make sure the cell actually exists!
@@ -60,15 +100,17 @@ function displayGrid() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       if (grid[y][x] === OPEN_TILE) {
-        fill("white");
+        // fill("white");
+        image(pathImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
       }
       if (grid[y][x] === IMPASSIBLE) {
-        fill("black");
+        // fill("black");
+        image(grassImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
       }
       if (grid[y][x] === PLAYER) {
         fill("red");
+        square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
       }
-      square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
     }
   }
 }
