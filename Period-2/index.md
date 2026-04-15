@@ -13,6 +13,7 @@
 - [Character In Grid](10-character)
 - [Platformer Text File Example](11-platformer-files)
 - [Walker OOP](12-walker)
+- [Fireworks OOP](13-fireworks)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
