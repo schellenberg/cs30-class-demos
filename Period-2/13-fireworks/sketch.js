@@ -27,6 +27,10 @@ class Particle {
     fill(this.r, this.g, this.b, this.opacity);
     circle(this.x, this.y, this.radius*2);
   }
+
+  isDead() {
+    return this.opacity <= 0;
+  }
 }
 
 let theFireworks = [];
@@ -39,9 +43,19 @@ function setup() {
 function draw() {
   background("black");
   for (let someFirework of theFireworks) {
-    someFirework.update();
-    someFirework.display();
+    if (someFirework.isDead()) {
+      //remove it
+      let index = theFireworks.indexOf(someFirework);
+      theFireworks.splice(index, 1);
+    }
+    else {
+      someFirework.update();
+      someFirework.display();
+    }
   }
+
+  //if you want constant fireworks
+  // mousePressed();
 }
 
 function mousePressed() {
