@@ -9,8 +9,14 @@ function setup() {
 function draw() {
   background(220);
 
+  //draw the lines first
   for (let node of nodes) {
     node.update();
+    node.connectTo(nodes);
+  }
+
+  //draw the circles overtop of the lines
+  for (let node of nodes) {
     node.display();
   }
 }
@@ -30,6 +36,9 @@ class MovingPoint {
     this.color = color(random(255), random(255), random(255));
     this.speed = 5;
     this.deltaTime = 0.05;
+    this.reach = 200;
+    this.maxRadius = 50;
+    this.minRadius = 15;
   }
 
   display() {
@@ -41,6 +50,30 @@ class MovingPoint {
   update() { 
     this.move();
     this.wrapAroundScreen();
+    this.adjustSizeBasedOnMouse();
+  }
+
+  adjustSizeBasedOnMouse() {
+    let mouseDistance = dist(mouseX, mouseY, this.x, this.y);
+    if (mouseDistance < this.reach) {
+      let theSize = map(mouseDistance, 0, this.reach, this.maxRadius, this.minRadius);
+      this.radius = theSize;
+    }
+    else {
+      this.radius = this.minRadius;
+    }
+  }
+
+  connectTo(nodesArray) {
+    for (let otherNode of nodesArray) {
+      if (this !== otherNode) {
+        let distanceApart = dist(this.x, this.y, otherNode.x, otherNode.y);
+        if (distanceApart < this.reach) {
+          stroke(this.color);
+          line(this.x, this.y, otherNode.x, otherNode.y);
+        }
+      }
+    }
   }
 
   wrapAroundScreen() {
