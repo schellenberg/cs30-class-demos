@@ -19,6 +19,7 @@
 - [OOP Inheritance](16-inheritance)
 - [Collide2d Demo](17-collide)
 - [Recursive Circles](18-recursion)
+- [Sierpinksi Triangle](19-sierpinski)
 
 ## Assignments
 - [Interactive Scene](interactive-scene)
