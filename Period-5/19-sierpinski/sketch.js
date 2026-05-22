@@ -6,15 +6,28 @@ let initialTriangle = [
   {x: 1550, y: 1000}
 ];
 
+let theDepth = 0;
+let theColors = ["red", "blue", "cyan", "yellow", "pink", "black", "lightgreen", "purple", "grey"];
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  sierpinski(initialTriangle, 3);
+  noStroke();
+  sierpinski(initialTriangle, theDepth);
 }
 
 function draw() {
 }
 
+function mousePressed() {
+  if (theDepth < 8) {
+    theDepth++;
+    background("white");
+    sierpinski(initialTriangle, theDepth);
+  }
+}
+
 function sierpinski(points, depth) {
+  fill(theColors[depth]);
   triangle(points[0].x, points[0].y,
            points[1].x, points[1].y,
            points[2].x, points[2].y,
