@@ -7,6 +7,7 @@
 - [Millis Demo](04-millis)
 - [Traffic Light](05-traffic)
 - [Bouncing Circles](06-circle-bounce)
+- [Perlin Noise](07-noise)
 
 ## Projects
 - [Interactive Scene](scene)
