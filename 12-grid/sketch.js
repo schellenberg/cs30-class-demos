@@ -29,6 +29,23 @@ function draw() {
   showGrid();
 }
 
+function mousePressed() {
+  let x = Math.floor(mouseX/cellSize);
+  let y = Math.floor(mouseY/cellSize);
+
+  console.log(x, y);
+  toggleCell(x, y);
+}
+
+function toggleCell(x, y) {
+  if (grid[y][x] === 1) {
+    grid[y][x] = 0;
+  }
+  else if (grid[y][x] === 0) {
+    grid[y][x] = 1;
+  }
+}
+
 function showGrid() {
   for (let y = 0; y < SQUARE_DIMENSIONS; y++) {
     for (let x = 0; x < SQUARE_DIMENSIONS; x++) {
