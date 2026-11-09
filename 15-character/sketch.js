@@ -1,4 +1,4 @@
-// 2d rectangular grid demo
+// character in grid
 
 const CELL_SIZE = 100;
 const OPEN_TILE = 0;
@@ -11,6 +11,8 @@ let thePlayer = {
   x: 0, 
   y: 0,
 };
+let grassImg;
+let stoneImg;
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -19,6 +21,8 @@ async function setup() {
   grid = generateRandomGrid(cols, rows);
   //put player in grid
   grid[thePlayer.y][thePlayer.x] = PLAYER;
+  grassImg = await loadImage("grass.JPG");
+  stoneImg = await loadImage("stone.JPG");
 }
 
 function draw() {
@@ -92,15 +96,17 @@ function displayGrid() {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       if (grid[y][x] === OPEN_TILE) {
-        fill('white');
+        // fill('white');
+        image(stoneImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
       else if (grid[y][x] === IMPASSIBLE) {
-        fill('black');
+        // fill('black');
+        image(grassImg, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
       }
       else if (grid[y][x] === PLAYER) {
         fill("red");
+        square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
       }
-      square(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE);
     }
   }
 }
