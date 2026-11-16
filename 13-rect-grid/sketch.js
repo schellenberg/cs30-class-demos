@@ -6,9 +6,10 @@ let cols;
 let grid;
 
 async function setup() {
-  createCanvas(windowWidth, windowHeight);
-  rows = Math.floor(height/CELL_SIZE);
-  cols = Math.floor(width/CELL_SIZE);
+  rows = Math.floor(windowHeight*0.85/CELL_SIZE);
+  cols = Math.floor(windowWidth*0.85/CELL_SIZE);
+  let canvas = createCanvas(cols*CELL_SIZE, rows*CELL_SIZE);
+  canvas.parent('canvas-container');
   grid = generateRandomGrid(cols, rows);
 }
 
@@ -27,17 +28,19 @@ function keyPressed() {
 }
 
 function mousePressed() {
-  let x = Math.floor(mouseX/CELL_SIZE);
-  let y = Math.floor(mouseY/CELL_SIZE);
-
-  //self
-  toggleCell(x, y);
-
-  //neighbours
-  toggleCell(x + 1, y);
-  toggleCell(x - 1, y);
-  toggleCell(x, y + 1);
-  toggleCell(x, y - 1);
+  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+    let x = Math.floor(mouseX/CELL_SIZE);
+    let y = Math.floor(mouseY/CELL_SIZE);
+  
+    //self
+    toggleCell(x, y);
+  
+    //neighbours
+    toggleCell(x + 1, y);
+    toggleCell(x - 1, y);
+    toggleCell(x, y + 1);
+    toggleCell(x, y - 1);
+  }
 }
 
 function toggleCell(x, y) {
