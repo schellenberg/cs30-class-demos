@@ -18,6 +18,7 @@
 - [Character in Grid](15-character)
 - [setTimeout](16-set-timeout)
 - [setInterval](17-set-interval)
+- [Walker OOP](18-walker)
 
 ## Projects
 - [Interactive Scene](scene)
